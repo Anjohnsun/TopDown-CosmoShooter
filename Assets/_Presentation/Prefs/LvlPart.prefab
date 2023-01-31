@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 6724090494908689662}
   - component: {fileID: 1964581274398263375}
   - component: {fileID: 8883989435423436249}
+  - component: {fileID: 3830168915177478916}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: LvlPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +101,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &3830168915177478916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868658352266039457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8257babdd8e4a214bb961ad9b18c9ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BeginLvl: {fileID: 6688225297035224414}
+  EndLvl: {fileID: 1129285899194906932}
+  _objects: []
 --- !u!1 &7735102656961613639
 GameObject:
   m_ObjectHideFlags: 0

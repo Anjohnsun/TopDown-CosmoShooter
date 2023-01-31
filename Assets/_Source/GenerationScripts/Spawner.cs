@@ -14,6 +14,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < _lvlSize; i++)
         {   
             chunkSpawn();
+            Debug.Log("sdasd");
         }
         
     }
@@ -21,8 +22,10 @@ public class Spawner : MonoBehaviour
     private void chunkSpawn()
     {
         Chunk newChank = Instantiate(ChunkPrefabs[Random.Range(0, ChunkPrefabs.Length)]);
-        newChank.transform.position = _spawnedChunks[_spawnedChunks.Count - 1].EndLvl.position - newChank.BeginLvl.localPosition;
         _spawnedChunks.Add(newChank);
+        newChank.transform.position = _spawnedChunks[_spawnedChunks.Count - 1].EndLvl.position - newChank.BeginLvl.localPosition;
+       
+       
     }
     
 }

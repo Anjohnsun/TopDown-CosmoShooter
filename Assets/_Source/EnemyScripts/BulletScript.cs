@@ -17,6 +17,7 @@ public class BulletScript : MonoBehaviour
     {
 
         _rb.AddForce(_rb.transform.forward * _bulletSpeed);
+        Destroy(gameObject, 5);
     }
 
     
