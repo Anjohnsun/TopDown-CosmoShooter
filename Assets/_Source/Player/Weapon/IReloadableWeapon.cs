@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface IReloadableWeapon : IWeapon
 {
-    public int MagazineSize => MagazineSize;
-    public int BulletsInMagazine => BulletsInMagazine;
-    public int BulletNumber { get; }
+    public int MagazineSize { get; }
+    public int BulletsInMagazine { get; }
+    public int ExtraBulletNumber { get; }
 
     public void Reload();
 }

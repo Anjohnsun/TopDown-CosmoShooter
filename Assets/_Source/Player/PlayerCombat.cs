@@ -10,14 +10,22 @@ namespace PlayerSystems
         [SerializeField] private int _maxHealth;
         [SerializeField] private int _health;
 
+        [SerializeField] private SimpleFirearm _actualWeapon;
+
         private void Start()
         {
             //подписка на инпут
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+                Attack();
+        }
+
         public void Attack()
         {
-
+            _actualWeapon.Attack();
         }
 
         public void GetDamage(int damage)
