@@ -18,7 +18,7 @@ namespace Enemy
         [SerializeField] private float _deathHpLvl;
         [SerializeField] private float _timeBetweenShoots;
         private float _actualReloadTime;
-        //[SerializeField] private GameObject _player;
+        
         
         private Transform _target;
         private bool _isPlayerInAgrRange = false;
@@ -59,6 +59,18 @@ namespace Enemy
             {
                 _isPlayerInAgrRange = false;
             }
+        }
+        private void GetDamage(float dmg)
+        {
+            _hp -= dmg;
+            if (_hp < 0)
+            {
+                Death();
+            }
+        }
+        private void Death()
+        {
+
         }
     }
 }
