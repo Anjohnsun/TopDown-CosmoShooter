@@ -15,13 +15,13 @@ namespace Enemy
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _hp;
         [SerializeField] private GameObject _player;
-        [SerializeField] private float _agrDistance;
+        
         [SerializeField] private Transform _head;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _timeBetweenShoots;
         private Transform _target;
         private float _actualReloadTime;
-        private float _distanceToPlayer;
+       
         private bool _ifPlayerInShoot = false;
 
         private void Start()
@@ -31,26 +31,29 @@ namespace Enemy
         }
         private void Update()
         {
-            _distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
+            
             _actualReloadTime -= Time.deltaTime;
-            if (_distanceToPlayer < _agrDistance)
+            
+            
+            
+            if (_ifPlayerInShoot == true && _actualReloadTime <= 0)
             {
-                _agent.SetDestination(_player.transform.position);
-                if (_ifPlayerInShoot == true && _actualReloadTime <= 0)
-                {
-                    Shoot();
-                    _actualReloadTime = _timeBetweenShoots;
-                }
+                Shoot();
+                _actualReloadTime = _timeBetweenShoots;
             }
+         
             
         }
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == 7)
             {
+                
                 _target = other.gameObject.transform;
                 _ifPlayerInShoot = true;
                 _agent.enabled = true;
+                //_agent.speed = _moveSpeed;
+                _agent.SetDestination(_player.transform.position);
             }
         }
         private void OnTriggerExit(Collider other)
@@ -58,6 +61,8 @@ namespace Enemy
             if (other.gameObject.layer == 7)
             {
                 _ifPlayerInShoot = false;
+                _agent.enabled = false;
+                //_agent.speed = 0;
             }
         }
         private void Shoot()
