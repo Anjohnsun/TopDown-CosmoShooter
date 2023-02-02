@@ -29,6 +29,5 @@ public class WeaponStateMachine
 
     private void Update()
     {
-        _currentWeapon.Update();
     }
 }
