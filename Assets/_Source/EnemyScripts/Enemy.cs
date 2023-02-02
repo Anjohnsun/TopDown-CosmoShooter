@@ -14,7 +14,7 @@ namespace Enemy
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _hp;
-        [SerializeField] private GameObject _player;
+        // û
         
         [SerializeField] private Transform _head;
         [SerializeField] private float _rotationSpeed;
@@ -53,7 +53,7 @@ namespace Enemy
                 _ifPlayerInShoot = true;
                 _agent.enabled = true;
                 //_agent.speed = _moveSpeed;
-                _agent.SetDestination(_player.transform.position);
+                _agent.SetDestination(_target.position);
             }
         }
         private void OnTriggerExit(Collider other)
