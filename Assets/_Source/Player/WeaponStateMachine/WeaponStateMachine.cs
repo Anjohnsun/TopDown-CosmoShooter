@@ -6,14 +6,14 @@ using UnityEngine;
 public class WeaponStateMachine
 {
     private Dictionary<Type, AWeapon> _weapons;
-    private AWeapon _currentWeapon;
+    public AWeapon _currentWeapon { get; private set; }
 
     public WeaponStateMachine()
     {
-        //подписка update на инпут как минимум 
+        
     }
 
-    private void InitStates(List<AWeapon> weaponStates)
+    public void InitStates(List<AWeapon> weaponStates)
     {
         _weapons = new Dictionary<Type, AWeapon>();
         foreach(AWeapon weapon in weaponStates)
@@ -27,7 +27,4 @@ public class WeaponStateMachine
         _currentWeapon = _weapons[typeOfNextWeapon];
     }
 
-    private void Update()
-    {
-    }
 }

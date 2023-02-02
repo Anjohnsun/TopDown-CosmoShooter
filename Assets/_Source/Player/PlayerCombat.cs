@@ -10,7 +10,7 @@ namespace PlayerSystems
         [SerializeField] private int _maxHealth;
         [SerializeField] private int _health;
 
-        [SerializeField] private SimplePistol _actualWeapon;
+        private WeaponStateMachine _weaponMachine;
 
         private void Start()
         {
@@ -20,12 +20,23 @@ namespace PlayerSystems
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
-                Attack();
+                StartAttack();
         }
 
-        public void Attack()
+        public void StartAttack()
         {
-            _actualWeapon.Attack();
+            if(_weaponMachine._currentWeapon != null)
+            _weaponMachine._currentWeapon.StartAttack();
+        }
+        public void StopAttack()
+        {
+            if (_weaponMachine._currentWeapon != null)
+                _weaponMachine._currentWeapon.StartAttack();
+        }
+        public void Reload()
+        {
+            if (_weaponMachine._currentWeapon != null)
+                _weaponMachine._currentWeapon.StartAttack();
         }
 
         public void GetDamage(int damage)
