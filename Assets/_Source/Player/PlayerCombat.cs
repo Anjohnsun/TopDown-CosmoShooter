@@ -10,7 +10,7 @@ namespace PlayerSystems
         [SerializeField] private int _maxHealth;
         [SerializeField] private int _health;
 
-        [SerializeField] private IWeapon _actualWeapon;
+        [SerializeField] private SimplePistol _actualWeapon;
 
         private void Start()
         {
