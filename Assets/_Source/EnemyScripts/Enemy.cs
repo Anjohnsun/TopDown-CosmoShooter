@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Enemy
+namespace Enemy 
 {
 
 
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour,  IPausable
     {
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private GameObject _bulletPref;
@@ -86,6 +86,11 @@ namespace Enemy
         private void Death()
         {
 
+        }
+
+        public void OnGameStateChanged(GameStates newGameState)
+        {
+            
         }
     }
 }
