@@ -328,7 +328,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 0
   _health: 0
-  _actualWeapon: {fileID: 7773374648976644030}
 --- !u!1 &7773374648947494353
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +437,6 @@ GameObject:
   - component: {fileID: 7773374648976644019}
   - component: {fileID: 7773374648976644028}
   - component: {fileID: 7773374648976644029}
-  - component: {fileID: 7773374648976644030}
   m_Layer: 0
   m_Name: simple revolver
   m_TagString: Untagged
@@ -525,28 +523,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7773374648976644030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7773374648976644031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93099d34e6c15684d8c863d9aa1ea800, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 1
-  _shootDistance: 15
-  _magazineSize: 5
-  _bulletsInMagazine: 5
-  _extraBulletNumber: 6
-  _shootEffect: {fileID: 1297432414191974507, guid: 723343258b3d69d40b2016a53e10633f,
-    type: 3}
-  _hitEffect: {fileID: 1297432414191974507, guid: 723343258b3d69d40b2016a53e10633f,
-    type: 3}
-  _shootPoint: {fileID: 7773374647965260714}
 --- !u!1 &7773374649084146685
 GameObject:
   m_ObjectHideFlags: 0
