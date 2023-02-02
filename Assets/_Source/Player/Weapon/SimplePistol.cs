@@ -14,7 +14,6 @@ public class SimplePistol : AReloadableWeapon
             {
                 //если попал в IDamagable, вызвать GetDamage(_damage);
                 Instantiate(_hitEffect, hit.point, new Quaternion());
-                Debug.Log("poof");
             }
         }
     }
