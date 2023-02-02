@@ -1187,16 +1187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93099d34e6c15684d8c863d9aa1ea800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
-  _shootDistance: 15
-  _magazineSize: 5
-  _bulletsInMagazine: 5
-  _extraBulletNumber: 6
-  _shootEffect: {fileID: 1297432414191974507, guid: 723343258b3d69d40b2016a53e10633f,
-    type: 3}
-  _hitEffect: {fileID: 1297432414191974507, guid: 723343258b3d69d40b2016a53e10633f,
-    type: 3}
-  _shootPoint: {fileID: 635324065}
 --- !u!65 &1650903734
 BoxCollider:
   m_ObjectHideFlags: 0
