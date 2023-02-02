@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class WeaponStateMachine
 {
-    private Dictionary<Type, WeaponBase> _weapons;
-    private WeaponBase _currentWeapon;
+    private Dictionary<Type, AWeapon> _weapons;
+    private AWeapon _currentWeapon;
 
     public WeaponStateMachine()
     {
         //подписка update на инпут как минимум 
-        InitStates();
     }
 
-    private void InitStates()
+    private void InitStates(List<AWeapon> weaponStates)
     {
-        _weapons = new Dictionary<Type, WeaponBase>();
-        //add simple gun
+        _weapons = new Dictionary<Type, AWeapon>();
+        foreach(AWeapon weapon in weaponStates)
+        {
+            _weapons.Add(weapon.GetType(), weapon);
+        }
     }
 
     public void ChangeState(Type typeOfNextWeapon)
