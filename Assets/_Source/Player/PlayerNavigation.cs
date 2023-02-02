@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayerSystems
-    {
+{
     public class PlayerNavigation : MonoBehaviour
     {
         [SerializeField] private float _rotateSpeed;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private Transform _movingCorrector;
         [SerializeField] private Camera _playerCamera;
+        [SerializeField] private Rigidbody _rigidBody;
 
         void Start()
         {
@@ -36,12 +37,12 @@ namespace PlayerSystems
 
         public void MoveVertically(float axisValue)
         {
-            transform.position += _movingCorrector.forward * axisValue * _moveSpeed;
+            _rigidBody.AddForce(_movingCorrector.forward * axisValue * _moveSpeed, ForceMode.Acceleration);
         }
 
         public void MoveHorizontally(float axisValue)
         {
-            transform.position += _movingCorrector.right * axisValue * _moveSpeed;
+            _rigidBody.AddForce(_movingCorrector.right * axisValue * _moveSpeed, ForceMode.Acceleration);
         }
 
     }
