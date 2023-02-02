@@ -6,7 +6,9 @@ public class GameStateMachine
 {
     public GameStates CurrentGameState { get; private set; }
     public delegate void StateChanging(GameStates newGameState);
-    public static event StateChanging StateChanged;
+
+    public static event StateChanging StateChanged; 
+
 
     public void ChangeGameState()
     {
