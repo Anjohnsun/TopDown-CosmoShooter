@@ -38,7 +38,7 @@ public class InputSystem : MonoBehaviour
         }
         if (Input.GetAxis("Vertical") != 0)
         {
-            MovedHorizontally.Invoke(Input.GetAxis("Vertical"));
+            MovedVertically.Invoke(Input.GetAxis("Vertical"));
         }
     }
 }
