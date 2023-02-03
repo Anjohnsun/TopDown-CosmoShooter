@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 1431636009}
   - component: {fileID: 1431636008}
   - component: {fileID: 1431636007}
+  - component: {fileID: 1431636010}
   m_Layer: 0
   m_Name: FLoor
   m_TagString: Untagged
@@ -753,6 +754,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431636005}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1431636010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431636005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3463f0a363bb2b41be4733d70d876e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackKey: 323
+  InteractKey: 101
 --- !u!1001 &1623004395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -767,9 +782,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7773374648230499046, guid: be5813202e302cf47a21b34210f167aa,
         type: 3}
+      propertyPath: _inputSystem
+      value: 
+      objectReference: {fileID: 1431636010}
+    - target: {fileID: 7773374648230499046, guid: be5813202e302cf47a21b34210f167aa,
+        type: 3}
       propertyPath: _weaponInitializer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7773374648230499046, guid: be5813202e302cf47a21b34210f167aa,
+        type: 3}
+      propertyPath: _weapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773374648230499046, guid: be5813202e302cf47a21b34210f167aa,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1342931325}
+    - target: {fileID: 7773374648230499046, guid: be5813202e302cf47a21b34210f167aa,
+        type: 3}
+      propertyPath: _weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 962762310}
+    - target: {fileID: 7773374648230499047, guid: be5813202e302cf47a21b34210f167aa,
+        type: 3}
+      propertyPath: _inputSystem
+      value: 
+      objectReference: {fileID: 1431636010}
     - target: {fileID: 7773374649084146684, guid: be5813202e302cf47a21b34210f167aa,
         type: 3}
       propertyPath: m_RootOrder

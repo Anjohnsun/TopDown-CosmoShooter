@@ -102,14 +102,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _shootDistance: 15
+  _shootPoint: {fileID: 6621156344011549025}
   _shootEffect: {fileID: 1297432414191974507, guid: 723343258b3d69d40b2016a53e10633f,
     type: 3}
-  _hitEffect: {fileID: 1297432414191974507, guid: 723343258b3d69d40b2016a53e10633f,
+  _hitEffect: {fileID: 9100440790446927570, guid: ffe3a9a7f1965464ca82219b8a7a6bff,
     type: 3}
-  _shootPoint: {fileID: 6621156344011549025}
   _magazineSize: 25
   _bulletsInMagazine: 25
   _extraBulletNumber: 75
+  _shootDelay: 0
 --- !u!95 &3962715035986994008
 Animator:
   serializedVersion: 4
