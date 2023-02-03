@@ -11,38 +11,54 @@ namespace PlayerSystems
         [SerializeField] private int _health;
 
         private WeaponStateMachine _weaponMachine;
+        [SerializeField] private List<AWeapon> _weapons;
+
+        [SerializeField] private InputSystem _inputSystem;
 
         private void Start()
         {
-            //подписка на инпут
+            _weaponMachine = new WeaponStateMachine();
+            _weaponMachine.InitStates(_weapons);
+
+            _inputSystem.Interacted += Reload;
+            _inputSystem.StartedAttack += StartAttack;
+            _inputSystem.StopedAttack += StopAttack;
         }
 
-        private void Update()
+        private void Update() //временно
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-                StartAttack();
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+                ChangeWeapon(1);
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+                ChangeWeapon(2);
         }
 
         public void StartAttack()
         {
-            if(_weaponMachine._currentWeapon != null)
-            _weaponMachine._currentWeapon.StartAttack();
+            if (_weaponMachine._currentWeapon != null)
+                _weaponMachine._currentWeapon.StartAttack();
         }
         public void StopAttack()
         {
             if (_weaponMachine._currentWeapon != null)
-                _weaponMachine._currentWeapon.StartAttack();
+                _weaponMachine._currentWeapon.StopAttack();
         }
         public void Reload()
         {
             if (_weaponMachine._currentWeapon != null)
-                _weaponMachine._currentWeapon.StartAttack();
+                _weaponMachine._currentWeapon.Reload();
+        }
+
+        public void ChangeWeapon(int weaponNumber)
+        {
+            if (_weapons.Count >= weaponNumber)
+                _weaponMachine.ChangeWeapon(_weapons[weaponNumber - 1].GetType());
         }
 
         public void GetDamage(int damage)
         {
             _health -= damage;
-            if(_health <= 0)
+            if (_health <= 0)
             {
                 Die();
             }
@@ -50,6 +66,7 @@ namespace PlayerSystems
 
         private void Die()
         {
+            Debug.Log("You died. What a pity.");
             //animate death
             //restart level
         }

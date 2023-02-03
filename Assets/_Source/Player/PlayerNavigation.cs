@@ -12,18 +12,18 @@ namespace PlayerSystems
         [SerializeField] private Camera _playerCamera;
         [SerializeField] private Rigidbody _rigidBody;
 
+        [SerializeField] InputSystem _inputSystem;
+
         void Start()
         {
-            //subscribe on Input
+            _inputSystem.MovedHorizontally += MoveHorizontally;
+            _inputSystem.MovedVertically += MoveVertically;
         }
 
         void Update()
         {
             Physics.Raycast(_playerCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit);
             RotateToPoint(hit);
-
-            MoveHorizontally(Input.GetAxis("Horizontal"));
-            MoveVertically(Input.GetAxis("Vertical"));
         }
 
         private void RotateToPoint(RaycastHit hit)

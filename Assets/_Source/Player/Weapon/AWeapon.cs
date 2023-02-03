@@ -6,23 +6,27 @@ using UnityEngine;
 [Serializable]
 public abstract class AWeapon : MonoBehaviour, IWeaponState
 {
+    [Header("Основное:")]
     [SerializeField] protected int _damage;
     [SerializeField] protected float _shootDistance;
 
+    [Header("Сл. логика:")]
+    [SerializeField] protected Transform _shootPoint;
+
+    [Header("Визуал:")]
     [SerializeField] protected GameObject _shootEffect;
     [SerializeField] protected GameObject _hitEffect;
-    [SerializeField] protected Transform _shootPoint;
 
     protected bool _isActive = false;
 
-    public void Enter()
+    public virtual void Enter()
     {
-        throw new NotImplementedException();
+        gameObject.SetActive(true);
     }
 
-    public void Exit()
+    public virtual void Exit()
     {
-        throw new NotImplementedException();
+        gameObject.SetActive(false);
     }
 
     public abstract void StartAttack();

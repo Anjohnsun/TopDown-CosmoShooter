@@ -632,6 +632,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &962762310 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 486880611926767312, guid: be5813202e302cf47a21b34210f167aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1623004395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8aaf0815e6673a4983e908aca0d6174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1342931325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4099839632442051379, guid: be5813202e302cf47a21b34210f167aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1623004395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e569d26ddd3b945b90f62adbf284ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1431636005
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +760,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 486880611926767312, guid: be5813202e302cf47a21b34210f167aa,
+        type: 3}
+      propertyPath: _shootDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773374648230499046, guid: be5813202e302cf47a21b34210f167aa,
+        type: 3}
+      propertyPath: _weaponInitializer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7773374649084146684, guid: be5813202e302cf47a21b34210f167aa,
         type: 3}
       propertyPath: m_RootOrder
@@ -796,5 +830,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerWithCamera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8781352776871661924, guid: be5813202e302cf47a21b34210f167aa,
+        type: 3}
+      propertyPath: _weaponsToInit.Array.data[0]
+      value: 
+      objectReference: {fileID: 1342931325}
+    - target: {fileID: 8781352776871661924, guid: be5813202e302cf47a21b34210f167aa,
+        type: 3}
+      propertyPath: _weaponsToInit.Array.data[1]
+      value: 
+      objectReference: {fileID: 962762310}
+    m_RemovedComponents:
+    - {fileID: 8781352776871661924, guid: be5813202e302cf47a21b34210f167aa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be5813202e302cf47a21b34210f167aa, type: 3}

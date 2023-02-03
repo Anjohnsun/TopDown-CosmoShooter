@@ -20,11 +20,17 @@ public class WeaponStateMachine
         {
             _weapons.Add(weapon.GetType(), weapon);
         }
+        _currentWeapon = _weapons[weaponStates[0].GetType()];
     }
 
-    public void ChangeState(Type typeOfNextWeapon)
+    public void ChangeWeapon(Type typeOfNextWeapon)
     {
-        _currentWeapon = _weapons[typeOfNextWeapon];
+        if (typeOfNextWeapon != _currentWeapon.GetType())
+        {
+            _currentWeapon.Exit();
+            _currentWeapon = _weapons[typeOfNextWeapon];
+            _currentWeapon.Enter();
+        }
     }
 
 }

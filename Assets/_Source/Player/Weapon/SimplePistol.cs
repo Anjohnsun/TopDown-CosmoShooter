@@ -20,6 +20,5 @@ public class SimplePistol : AReloadableWeapon
 
     public override void StopAttack()
     {
-        throw new System.NotImplementedException();
     }
 }
