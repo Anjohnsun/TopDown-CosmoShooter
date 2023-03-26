@@ -35,15 +35,18 @@ namespace PlayerSystems
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, rot, 0), Time.deltaTime * _rotateSpeed);
         }
 
-        public void MoveVertically(float axisValue)
+        private void MoveVertically(float axisValue)
         {
             _rigidBody.AddForce(_movingCorrector.forward * axisValue * _moveSpeed, ForceMode.Acceleration);
+            if (_rigidBody.velocity.magnitude > _moveSpeed)
+                _rigidBody.velocity = _rigidBody.velocity.normalized * _moveSpeed;
         }
 
-        public void MoveHorizontally(float axisValue)
+        private void MoveHorizontally(float axisValue)
         {
             _rigidBody.AddForce(_movingCorrector.right * axisValue * _moveSpeed, ForceMode.Acceleration);
+            if (_rigidBody.velocity.magnitude > _moveSpeed)
+                _rigidBody.velocity = _rigidBody.velocity.normalized * _moveSpeed;
         }
-
     }
 }

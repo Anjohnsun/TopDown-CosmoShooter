@@ -33,7 +33,6 @@ public class WeaponStateMachine
     {
         //необходимо обсудить способ смены орудия
         _currentWeapon = _weapons[typeOfNextWeapon];
-        Debug.Log("success");
     }
 
     public void AddNewState(AWeapon newWeapon)
