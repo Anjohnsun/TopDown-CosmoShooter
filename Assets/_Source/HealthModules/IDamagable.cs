@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HealthSystem
 {
-    public interface ADamagable
+    public interface IDamagable
     {
         public void Damage();
         public void Annihilate();
