@@ -2,15 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
+using HealthSystem;
 
 namespace PlayerSystems
 {
-    public class PlayerCombat : MonoBehaviour
+    public class PlayerCombat : MonoBehaviour, IDamagable
     {
-        [SerializeField] private int _maxHealth;
-        [SerializeField] private int _health;
-
         [SerializeField] private WeaponStateMachine _weaponMachine;
 
         [SerializeField] private AWeapon _weapon1;
@@ -56,19 +53,20 @@ namespace PlayerSystems
             }
         }
 
-        public void GetDamage(int damage)
-        {
-            _health -= damage;
-            if(_health <= 0)
-            {
-                Die();
-            }
-        }
-
         private void Die()
         {
             //animate death
             //restart level
+        }
+
+        public void Damage()
+        {
+            //реакция на урон
+        }
+
+        public void Annihilate()
+        {
+            //анимация смерти и перезапуск уровня
         }
     }
 }

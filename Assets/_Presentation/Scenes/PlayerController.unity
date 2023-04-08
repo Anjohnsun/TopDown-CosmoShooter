@@ -415,6 +415,8 @@ GameObject:
   - component: {fileID: 456196398}
   - component: {fileID: 456196401}
   - component: {fileID: 456196400}
+  - component: {fileID: 456196403}
+  - component: {fileID: 456196402}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -468,8 +470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8751c4c277d7c25419e917d7f9dd3882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 8
-  _health: 18
   _weapon1: {fileID: 1317320838}
   _weapon2: {fileID: 1261924090}
 --- !u!114 &456196401
@@ -486,9 +486,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateSpeed: 400
   _moveSpeed: 6.88
+  _sprintPower: 8.74
+  _diveDuration: 3.6
   _movingCorrector: {fileID: 972046810}
   _playerCamera: {fileID: 503979451}
   _rigidBody: {fileID: 456196398}
+--- !u!114 &456196402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456196394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c2d2fa2792427469078fcdbce3448c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpBarImage: {fileID: 0}
+--- !u!114 &456196403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456196394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20d159ea3416304aa3100ce26f10170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 59
+  _currentHealth: 31
+  _isRegenerating: 0
+  _regenerationPerSecond: 10
+  _uiHealthDrawer: {fileID: 456196402}
 --- !u!1 &503979449
 GameObject:
   m_ObjectHideFlags: 0
