@@ -65,10 +65,10 @@ namespace Enemy
             _hp -= dmg;
             if (_hp < 0)
             {
-                Death();
+                Die();
             }
         }
-        private void Death()
+        private void Die()
         {
 
         }
