@@ -55,9 +55,8 @@ namespace PlayerSystems
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (_obstacleMask == ( _obstacleMask | (1 << collision.gameObject.layer) ))
+            if (_obstacleMask == (_obstacleMask | (1 << collision.gameObject.layer)))
             {
-                Debug.Log("Collision obstacle");
                 DOTween.Kill(transform);
             }
         }

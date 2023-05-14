@@ -13,6 +13,8 @@ public abstract class AWeapon : AWeaponBase
     [SerializeField] protected GameObject _hitEffect;
     [SerializeField] protected Transform _shootPoint;
 
+    [SerializeField] protected LayerMask _shootableLayers;
+
     public override void Enter()
     {
         base.Enter();
