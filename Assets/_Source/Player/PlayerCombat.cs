@@ -8,30 +8,28 @@ namespace PlayerSystems
 {
     public class PlayerCombat : MonoBehaviour, IDamagable
     {
-        [SerializeField] private WeaponStateMachine _weaponMachine;
+        private WeaponStateMachine _weaponMachine;
 
-        [SerializeField] private AWeapon _weapon1;
-        [SerializeField] private AWeapon _weapon2;
+        [SerializeField] private List<AWeapon> _weapons;
 
-        private void Start()
+        private PlayerInput _playerInput;
+
+        private void Awake()
         {
-            //подписка на инпут
+            _playerInput = new PlayerInput();
+            _playerInput.Enable();
 
-            _weaponMachine = new WeaponStateMachine(new List<AWeapon>() { _weapon1, _weapon2});
-        }
+            _playerInput.Player.Attack.started += context => StartAction();
+            _playerInput.Player.Attack.canceled += context => StopAction();
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-                StartAction();
-            if (Input.GetKeyUp(KeyCode.Mouse0))
-                StopAction();
-            if (Input.GetKeyDown(KeyCode.R))
-                Reload();
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-                _weaponMachine.ChangeState(typeof(SimplePistol));
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-                _weaponMachine.ChangeState(typeof(MachineGun));
+            _playerInput.Player.Reload.started += context => Reload();
+
+            _playerInput.Player.Weapon1.started += context => _weaponMachine.ChangeState(_weapons[0].GetType());
+            _playerInput.Player.Weapon2.started += context => _weaponMachine.ChangeState(_weapons[1].GetType());
+            _playerInput.Player.Weapon3.started += context => _weaponMachine.ChangeState(_weapons[2].GetType());
+            _playerInput.Player.Weapon4.started += context => _weaponMachine.ChangeState(_weapons[3].GetType());
+
+            _weaponMachine = new WeaponStateMachine(new List<AWeapon>() {_weapons[0], _weapons[1]}); //временно, заменить на загрузку сохранения
         }
 
         public void StartAction()
@@ -53,11 +51,6 @@ namespace PlayerSystems
             }
         }
 
-        private void Die()
-        {
-            //animate death
-            //restart level
-        }
 
         public void Damage()
         {
@@ -67,6 +60,24 @@ namespace PlayerSystems
         public void Annihilate()
         {
             //анимация смерти и перезапуск уровня
+        }
+
+        public void AddNewWeapon(AWeapon newWeapon)
+        {
+            _weaponMachine.AddNewState(newWeapon);
+        }
+
+        public void AddResources(Type weaponType, int number)
+        {
+            foreach (AWeapon weapon in _weapons)
+            {
+                if(weapon.GetType() == weaponType)
+                    if(weapon is AReloadableWeapon)
+                    {
+                        AReloadableWeapon weap = (AReloadableWeapon)weapon;
+                        weap.AddBullets(number);
+                    }
+            }
         }
     }
 }

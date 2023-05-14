@@ -6,7 +6,7 @@ public abstract class AReloadableWeapon : AWeapon
 {
     [SerializeField] protected int _magazineSize;
     [SerializeField] protected int _bulletsInMagazine;
-    [SerializeField] protected int _extraBulletNumber;
+    [SerializeField] private int _extraBulletNumber;
 
     public virtual void Reload()
     {
@@ -27,5 +27,12 @@ public abstract class AReloadableWeapon : AWeapon
                 _extraBulletNumber = 0;
             }
         }
+    }
+
+    public virtual void AddBullets(int bulletNumber)
+    {
+        if (bulletNumber <= 0)
+            return;
+        _extraBulletNumber += bulletNumber;
     }
 }

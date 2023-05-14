@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 namespace PlayerSystems
 {
@@ -9,21 +10,26 @@ namespace PlayerSystems
     {
         [SerializeField] private float _rotateSpeed;
         [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _sprintPower;
-        [SerializeField] private float _diveDuration;
+        [SerializeField] private float _dodgeDistance;
+        [SerializeField] private float _dodgeDuration;
         [SerializeField] private Transform _movingCorrector;
         [SerializeField] private Camera _playerCamera;
         [SerializeField] private Rigidbody _rigidBody;
+        [SerializeField] private LayerMask _obstacleMask;
 
         private PlayerInput _playerInput;
         private bool _canMove;
+
+        [HideInInspector] public UnityEvent<bool> OnLockActions = new UnityEvent<bool>();
 
         private void Awake()
         {
             _playerInput = new PlayerInput();
 
-            _playerInput.Player.Dive.started += context => Dive();
+            _playerInput.Player.Dive.started += context => MakeDodge();
             _canMove = true;
+
+            OnLockActions.AddListener(LockMovement);
         }
 
         private void OnEnable()
@@ -47,6 +53,15 @@ namespace PlayerSystems
             }
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (_obstacleMask == ( _obstacleMask | (1 << collision.gameObject.layer) ))
+            {
+                Debug.Log("Collision obstacle");
+                DOTween.Kill(transform);
+            }
+        }
+
         private void RotateToPoint(RaycastHit hit)
         {
             Vector3 diff = hit.point - transform.position;
@@ -58,33 +73,44 @@ namespace PlayerSystems
 
         private void Move(Vector2 way)
         {
-            _rigidBody.AddForce(new Vector3(way.x, 0, way.y) * _moveSpeed, ForceMode.Acceleration);
+            _rigidBody.AddForce((_movingCorrector.forward * way.y + _movingCorrector.right * way.x) * _moveSpeed, ForceMode.Acceleration);
             if (_rigidBody.velocity.magnitude > _moveSpeed)
                 _rigidBody.velocity = _rigidBody.velocity.normalized * _moveSpeed;
         }
 
-        private void Dive()
+        private void MakeDodge()
         {
-            _rigidBody.velocity = new Vector3();
-            _rigidBody.AddForce(transform.forward * _sprintPower, ForceMode.Impulse);
+            if (_canMove)
+            {
+                transform.DOMove(transform.position + transform.forward * _dodgeDistance, _dodgeDuration).SetEase(Ease.InOutQuad);
 
-            LockActions();
-            Invoke( "UnlockActions", _diveDuration);
+                LockActions(true);
+                Invoke("UnlockActions", _dodgeDuration);
+            }
         }
 
-        private void LockActions()
+        private void LockMovement(bool def)
         {
-            Debug.Log("lock");
-                _canMove = false;
-                _playerInput.Player.Dive.performed -= context => Dive();
+            switch (def)
+            {
+                case true:
+                    _canMove = false;
+                    break;
+                case false:
+                    _rigidBody.velocity = new Vector3();
+                    _canMove = true;
+                    break;
+            }
+        }
 
+        private void LockActions(bool def)
+        {
+            OnLockActions.Invoke(def);
         }
 
         private void UnlockActions()
         {
-            Debug.Log("open");
-            _canMove = true;
-            _playerInput.Player.Dive.performed += context => Dive();
+            OnLockActions.Invoke(false);
         }
     }
 }

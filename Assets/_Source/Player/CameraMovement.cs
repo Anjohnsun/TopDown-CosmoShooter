@@ -7,7 +7,6 @@ using PlayerSystems;
 
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera _playerCamera;
     [SerializeField] private CinemachineDollyCart _cameraCart;
     [SerializeField] private float _rotationTime;
 
@@ -27,10 +26,10 @@ public class CameraMovement : MonoBehaviour
         {
             if (leftWay)
                 DOTween.To(() => CameraPosition, (x) => CameraPosition = x,
-        CameraPosition - 1, _rotationTime).SetEase(Ease.OutExpo);
+        CameraPosition - 1, _rotationTime).SetEase(Ease.OutQuint);
             if (!leftWay)
                 DOTween.To(() => CameraPosition, (x) => CameraPosition = x,
-        CameraPosition + 1, _rotationTime).SetEase(Ease.OutExpo);
+        CameraPosition + 1, _rotationTime).SetEase(Ease.OutQuint);
         }
     }
 
