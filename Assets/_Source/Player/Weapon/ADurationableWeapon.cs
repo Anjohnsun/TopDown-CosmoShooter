@@ -10,13 +10,15 @@ public class ADurationableWeapon : AReloadableWeapon
     private bool _isShooting = false;
     private HealthModule _enemyHealthModule;
 
+    protected RaycastHit _hit;
+    protected Ray _ray;
 
     public override void StartAction()
     {
         _isShooting = true;
     }
 
-    private void Update()
+    protected void Update()
     {
         if (_isShooting)
         {
@@ -25,11 +27,11 @@ public class ADurationableWeapon : AReloadableWeapon
             {
                 if (_bulletsInMagazine > 0)
                 {
-                    Ray ray = new Ray(_shootPoint.position, _shootPoint.forward * _shootDistance);
-                    if (Physics.Raycast(ray, out RaycastHit hit))
+                    _ray = new Ray(_shootPoint.position, _shootPoint.forward*500);
+                    if (Physics.Raycast(_ray, out _hit))
                     {
-                        if (hit.transform.TryGetComponent<HealthModule>(out _enemyHealthModule)) _enemyHealthModule.GetDamage(_damage);
-                        Instantiate(_hitEffect, hit.point, new Quaternion());
+                        if (_hit.transform.TryGetComponent(out _enemyHealthModule)) _enemyHealthModule.GetDamage(_damage);
+                        Instantiate(_hitEffect, _hit.point, new Quaternion());
                         _bulletsInMagazine--;
                     }
                 }

@@ -24,12 +24,19 @@ namespace PlayerSystems
 
             _playerInput.Player.Reload.started += context => Reload();
 
-            _playerInput.Player.Weapon1.started += context => _weaponMachine.ChangeState(_weapons[0].GetType());
-            _playerInput.Player.Weapon2.started += context => _weaponMachine.ChangeState(_weapons[1].GetType());
-            _playerInput.Player.Weapon3.started += context => _weaponMachine.ChangeState(_weapons[2].GetType());
-            _playerInput.Player.Weapon4.started += context => _weaponMachine.ChangeState(_weapons[3].GetType());
+            _playerInput.Player.Weapon1.started += context => _weaponMachine.ChangeState(typeof(SimplePistol));
+            _playerInput.Player.Weapon2.started += context => _weaponMachine.ChangeState(typeof(MachineGun));
+            _playerInput.Player.Weapon3.started += context => _weaponMachine.ChangeState(typeof(Laser));
+            //_playerInput.Player.Weapon4.started += context => _weaponMachine.ChangeState(typeof(SimplePistol));
 
-            _weaponMachine = new WeaponStateMachine(new List<AWeapon>() {_weapons[0], _weapons[1]}); //временно, заменить на загрузку сохранения
+            _weaponMachine = new WeaponStateMachine();
+            LoadSaves();
+        }
+
+        private void LoadSaves()
+        {
+            //логика загрузки из префаба
+            //AddNewWeapon(_weapons[1], 25);
         }
 
         public void StartAction()
@@ -62,9 +69,10 @@ namespace PlayerSystems
             //анимация смерти и перезапуск уровня
         }
 
-        public void AddNewWeapon(AWeapon newWeapon)
+        public void AddNewWeapon(AWeapon newWeapon, int StartBullets)
         {
             _weaponMachine.AddNewState(newWeapon);
+            AddResources(newWeapon.GetType(), StartBullets);
         }
 
         public void AddResources(Type weaponType, int number)

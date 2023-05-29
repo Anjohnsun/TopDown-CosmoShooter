@@ -12,26 +12,19 @@ public class WeaponStateMachine
         get => _currentWeapon;
         private set => _currentWeapon = value;
     }
-    public WeaponStateMachine(List<AWeapon> startWeapons)
+
+    public WeaponStateMachine()
     {
-        InitStates(startWeapons);
+        InitStates();
     }
 
-    private void InitStates(List<AWeapon> weaponStates)
+    private void InitStates()
     {
         _weapons = new Dictionary<Type, AWeapon>();
-        foreach(AWeapon weapon in weaponStates)
-        {
-            _weapons.Add(weapon.GetType(), weapon);
-        }
-
-        //потом удалить
-        ChangeState(typeof(SimplePistol));
     }
 
     public void ChangeState(Type typeOfNextWeapon)
     {
-        //необходимо обсудить способ смены орудия
         _currentWeapon = _weapons[typeOfNextWeapon];
     }
 

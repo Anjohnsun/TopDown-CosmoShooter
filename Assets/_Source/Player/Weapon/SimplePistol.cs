@@ -10,10 +10,10 @@ public class SimplePistol : AReloadableWeapon
     {
         if (_bulletsInMagazine > 0)
         {
-            Ray ray = new Ray(_shootPoint.position, _shootPoint.forward * _shootDistance);
+            Ray ray = new Ray(_shootPoint.position, _shootPoint.forward * 500);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.transform.TryGetComponent<HealthModule>(out _enemyHealthModule)) _enemyHealthModule.GetDamage(_damage);
+                if (hit.transform.TryGetComponent(out _enemyHealthModule)) _enemyHealthModule.GetDamage(_damage);
                 Instantiate(_hitEffect, hit.point, new Quaternion());
                 _bulletsInMagazine--;
             }
