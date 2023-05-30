@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CloseCombatEnemy : MonoBehaviour, IPausable
-{
-   
-
-    
+{ 
     [SerializeField] private Transform _head;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _moveSpeed;
@@ -26,21 +23,18 @@ public class CloseCombatEnemy : MonoBehaviour, IPausable
     {
         _actualReloadTime = _timeBetweenStrikes;
         _agent.speed = _moveSpeed;
+
+        GameStateMachine.StateChanged += OnGameStateChanged;
     }
     private void Update()
     {
         if (_onPause == false)
         {
-
-
             _actualReloadTime -= Time.deltaTime;
             _ray = new Ray(_inRangeCheckPoint.position, transform.forward);
             Debug.DrawRay(_inRangeCheckPoint.position, transform.forward, Color.green);
             if (Physics.Raycast(_ray) && _actualReloadTime <= 0)
             {
-
-
-
                 _actualReloadTime += _timeBetweenStrikes;
             }
         }
@@ -49,7 +43,6 @@ public class CloseCombatEnemy : MonoBehaviour, IPausable
     {
         if (other.gameObject.layer == 7 && _onPause == false)
         {
-
             _target = other.gameObject.transform;
             _agent.enabled = true;
             _agent.SetDestination(_target.transform.position);
@@ -58,7 +51,6 @@ public class CloseCombatEnemy : MonoBehaviour, IPausable
             Vector3 rotation = Quaternion.Lerp(_head.rotation, look, _rotationSpeed * Time.deltaTime).eulerAngles;
             _head.rotation = Quaternion.Euler(0, rotation.y, 0);
             _isPlayerInAgrRange = true;
-
         }
     }
     private void OnTriggerExit(Collider other)
@@ -75,8 +67,8 @@ public class CloseCombatEnemy : MonoBehaviour, IPausable
         throw new System.NotImplementedException();
     }
 
-    void IPausable.OnGameStateChanged(GameStates newGameState)
+    private void OnDestroy()
     {
-        throw new System.NotImplementedException();
+        GameStateMachine.StateChanged -= OnGameStateChanged;
     }
 }

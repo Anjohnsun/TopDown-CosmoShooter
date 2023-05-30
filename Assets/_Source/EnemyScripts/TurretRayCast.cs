@@ -31,15 +31,14 @@ public class TurretRayCast : MonoBehaviour, IPausable
         _actualReloadTime = _timeBetweenShoots;
         _agent.speed = _moveSpeed;
         _ray = new Ray(ShootPoint.position, transform.position);
-        
-        
+
+
+        GameStateMachine.StateChanged += OnGameStateChanged;
     }
     private void Update()
     {
         if (_onPause == false)
         {
-
-
             _actualReloadTime -= Time.deltaTime;
 
             if (_isPlayerInAgrRange == true && _actualReloadTime <= 0)
@@ -49,7 +48,6 @@ public class TurretRayCast : MonoBehaviour, IPausable
                 Debug.DrawRay(ShootPoint.position, ShootPoint.forward * 100, Color.green);
 
                 _actualReloadTime += _timeBetweenShoots;
-
             }
         }
     }
@@ -92,8 +90,8 @@ public class TurretRayCast : MonoBehaviour, IPausable
         _onPause = true;
     }
 
-    void IPausable.OnGameStateChanged(GameStates newGameState)
+    private void OnDestroy()
     {
-        
+        GameStateMachine.StateChanged -= OnGameStateChanged;
     }
 }

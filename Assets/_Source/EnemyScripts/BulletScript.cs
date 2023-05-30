@@ -18,9 +18,7 @@ public class BulletScript : MonoBehaviour, IPausable
 
     private void Start()
     {
-
-        _rb.AddForce(_rb.transform.forward * _bulletSpeed);
-       
+        GameStateMachine.StateChanged += OnGameStateChanged;
     }
 
     private void Update()
@@ -38,6 +36,12 @@ public class BulletScript : MonoBehaviour, IPausable
     {
         Destroy(gameObject);
     }
+
+    private void OnDestroy()
+    {
+        GameStateMachine.StateChanged -= OnGameStateChanged;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         
@@ -50,11 +54,6 @@ public class BulletScript : MonoBehaviour, IPausable
 
     public void OnGameStateChanged(GameStates newGameState)
     {
-        
-    }
 
-    void IPausable.OnGameStateChanged(GameStates newGameState)
-    {
-       
     }
 }

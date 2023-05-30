@@ -18,31 +18,25 @@ namespace Enemy
         [SerializeField] private float _timeBetweenShoots;
         [SerializeField] private UnityEngine.AI.NavMeshAgent _agent;
         [SerializeField] private float _stopToAttackRadius;
-        private Turret turret;
         private float _actualReloadTime;
         private float dist;
         private bool _onPause = false;
-
-
-
         private Transform _target;
         private bool _isPlayerInAgrRange = false;
 
-        GameStates IPausable.CurrentGameState { get ; set; }
+        GameStates IPausable.CurrentGameState { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         private void Start()
         {
             _actualReloadTime = _timeBetweenShoots;
             _agent.speed = _moveSpeed;
 
-           // GameStateMachine.StateChanging += turret.OnGameStateChanged;
+            GameStateMachine.StateChanged += OnGameStateChanged;
         }
         private void Update()
         {
             if (_onPause == false)
             {
-
-
                 _actualReloadTime -= Time.deltaTime;
 
                 if (_isPlayerInAgrRange == true && _actualReloadTime <= 0)
@@ -51,7 +45,6 @@ namespace Enemy
                     Instantiate(_bulletPref, ShootPoint.position, ShootPoint.rotation);
 
                     _actualReloadTime = _timeBetweenShoots;
-
                 }
             }
         }
@@ -91,12 +84,11 @@ namespace Enemy
         public void OnGameStateChanged(GameStates newGameState)
         {
             _onPause = true;
-
         }
 
-         void IPausable.OnGameStateChanged(GameStates newGameState)
-         {
-            
-         }
+        private void OnDestroy()
+        {
+            GameStateMachine.StateChanged -= OnGameStateChanged;
+        }
     }
 }
