@@ -6,7 +6,7 @@ namespace Enemy
 {
 
 
-    public class Turret : MonoBehaviour
+    public class Turret : MonoBehaviour, IPausable
     {
         
         public Transform ShootPoint;
@@ -25,6 +25,9 @@ namespace Enemy
         
         private Transform _target;
         private bool _isPlayerInAgrRange = false;
+
+        GameStates IPausable.CurrentGameState { get ; set; }
+
         private void Start()
         {
             _actualReloadTime = _timeBetweenShoots;
@@ -75,6 +78,15 @@ namespace Enemy
                 _agent.enabled = false;
             }
         }
-        
+
+        public void OnGameStateChanged(GameStates newGameState)
+        {
+            
+        }
+
+        void IPausable.OnGameStateChanged(GameStates newGameState)
+        {
+           
+        }
     }
 }
