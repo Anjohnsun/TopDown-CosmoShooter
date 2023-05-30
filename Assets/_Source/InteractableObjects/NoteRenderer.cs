@@ -35,10 +35,13 @@ public class NoteRenderer : MonoBehaviour
         _authorField.text = note.Author;
 
         DOTween.To(() => _noteCanvasGroup.alpha, (x) => _noteCanvasGroup.alpha = x, 1, _openCloseDuration);
+
+        GameStateMachine.ChangeGameState(GameStates.Paused);
     }
 
     public void HideNote()
     {
+        GameStateMachine.ChangeGameState(GameStates.Playing);
         DOTween.To(() => _noteCanvasGroup.alpha, (x) => _noteCanvasGroup.alpha = x, 0, _openCloseDuration);
     }
 

@@ -6,7 +6,20 @@ public abstract class AReloadableWeapon : AWeapon
 {
     [SerializeField] protected int _magazineSize;
     [SerializeField] protected int _bulletsInMagazine;
-    [SerializeField] private int _extraBulletNumber;
+    [SerializeField] protected int _extraBulletNumber;
+
+    protected int BulletInMagazine
+    {
+        get => _bulletsInMagazine;
+        set
+        {
+            _bulletsInMagazine = value;
+            _wInfoRenderer.RefreshInfo();
+        }
+    }
+
+    public int BulletsInMagazine => _bulletsInMagazine;
+    public int ExtraBulletNumber => _extraBulletNumber;
 
     public virtual void Reload()
     {
@@ -27,6 +40,7 @@ public abstract class AReloadableWeapon : AWeapon
                 _extraBulletNumber = 0;
             }
         }
+        _wInfoRenderer.RefreshInfo();
     }
 
     public virtual void AddBullets(int bulletNumber)
@@ -34,5 +48,12 @@ public abstract class AReloadableWeapon : AWeapon
         if (bulletNumber <= 0)
             return;
         _extraBulletNumber += bulletNumber;
+        _wInfoRenderer.RefreshInfo();
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        _wInfoRenderer.ChangeWeapon(this);
     }
 }

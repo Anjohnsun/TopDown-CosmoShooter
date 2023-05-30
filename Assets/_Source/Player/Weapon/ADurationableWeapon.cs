@@ -32,8 +32,9 @@ public class ADurationableWeapon : AReloadableWeapon
                     {
                         if (_hit.transform.TryGetComponent(out _enemyHealthModule)) _enemyHealthModule.GetDamage(_damage);
                         Instantiate(_hitEffect, _hit.point, new Quaternion());
-                        _bulletsInMagazine--;
                     }
+                    BulletInMagazine--;
+                    //звук выстрела
                 }
                 _timeToShot = _shootDelay;
             }
@@ -44,4 +45,11 @@ public class ADurationableWeapon : AReloadableWeapon
     {
         _isShooting = false;
     }
+
+    public override void Exit()
+    {
+        base.Exit();
+        StopAction();
+    }
+
 }

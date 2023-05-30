@@ -15,8 +15,16 @@ public class SimplePistol : AReloadableWeapon
             {
                 if (hit.transform.TryGetComponent(out _enemyHealthModule)) _enemyHealthModule.GetDamage(_damage);
                 Instantiate(_hitEffect, hit.point, new Quaternion());
-                _bulletsInMagazine--;
             }
+            _bulletsInMagazine--;
+            //звук выстрела
+            _wInfoRenderer.RefreshInfo();
         }
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        _wInfoRenderer.ChangeWeapon(this);
     }
 }

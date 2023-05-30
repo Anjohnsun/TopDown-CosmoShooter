@@ -11,10 +11,10 @@ public class WeaponUnlocker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(1);
         if ((_playerLayer & 1 << other.gameObject.layer) == 1 << other.gameObject.layer)
         {
             other.GetComponentInParent<PlayerCombat>().AddNewWeapon(_weaponToUnlock, _startBullets);
+            Debug.Log(12345);
             Destroy(gameObject);
         }
     }
