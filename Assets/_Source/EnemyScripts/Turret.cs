@@ -14,9 +14,9 @@ namespace Enemy
         [SerializeField] private GameObject _bulletPref;
         [SerializeField] private Transform _head;
         [SerializeField] private float _rotationSpeed;
-        [SerializeField] private float _hp;
-        [SerializeField] private float _deathHpLvl;
+        [SerializeField] private float _moveSpeed;
         [SerializeField] private float _timeBetweenShoots;
+        [SerializeField] private UnityEngine.AI.NavMeshAgent _agent;
         private float _actualReloadTime;
         
         
@@ -25,6 +25,7 @@ namespace Enemy
         private void Start()
         {
             _actualReloadTime = _timeBetweenShoots;
+            _agent.speed = _moveSpeed;
         }
         private void Update()
         {
@@ -35,7 +36,8 @@ namespace Enemy
                
                 Instantiate(_bulletPref, ShootPoint.position, ShootPoint.rotation);
                
-                _actualReloadTime += _timeBetweenShoots;
+                _actualReloadTime = _timeBetweenShoots;
+               
             }
         }
         private void OnTriggerStay(Collider other)
@@ -44,7 +46,8 @@ namespace Enemy
             {
                 
                 _target = other.gameObject.transform;
-               
+                _agent.enabled = true;
+                _agent.SetDestination(_target.transform.position);
                 Vector3 direction = _target.position - transform.position;
                 Quaternion look = Quaternion.LookRotation(direction);
                 Vector3 rotation = Quaternion.Lerp(_head.rotation, look, _rotationSpeed * Time.deltaTime).eulerAngles;
@@ -58,19 +61,9 @@ namespace Enemy
             if (other.gameObject.layer == 7)
             {
                 _isPlayerInAgrRange = false;
+                _agent.enabled = false;
             }
         }
-        private void GetDamage(float dmg)
-        {
-            _hp -= dmg;
-            if (_hp < 0)
-            {
-                Die();
-            }
-        }
-        private void Die()
-        {
-
-        }
+        
     }
 }

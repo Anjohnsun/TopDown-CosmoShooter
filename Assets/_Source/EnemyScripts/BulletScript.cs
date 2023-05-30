@@ -26,7 +26,7 @@ public class BulletScript : MonoBehaviour
         
         if (collision.gameObject.layer == 7)
         {
-            //нанесение урона тут  
+            
         }
         
     }

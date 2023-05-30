@@ -6,17 +6,6 @@ public abstract class AbstractEnemy
 {
     float speed;
     float rotationSpeed;
-    float damage;
-    float maxHP;
-    float currentHP;
-
-    private void GetDamage(float dmg)
-    {
-       
-    }
-    private void Die()
-    {
-
-    }
-
+    float agrDistance;
+    float reloadTime;
 }
