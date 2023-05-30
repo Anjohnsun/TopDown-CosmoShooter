@@ -13,7 +13,9 @@ public class TurretRayCast : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _timeBetweenShoots;
     [SerializeField] private UnityEngine.AI.NavMeshAgent _agent;
+    [SerializeField] private float _stopToAttackRadius;
     private Ray _ray = new Ray();
+    private float dist;
 
 
     private float _actualReloadTime;
@@ -46,9 +48,17 @@ public class TurretRayCast : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
-
+            dist = Vector3.Distance(transform.position, other.transform.position);
             _target = other.gameObject.transform;
-            _agent.enabled = true;
+            //_agent.enabled = true;
+            if (dist <= _stopToAttackRadius)
+            {
+                _agent.enabled = false;
+            }
+            else
+            {
+                _agent.enabled = true;
+            }
             _agent.SetDestination(_target.transform.position);
             Vector3 direction = _target.position - transform.position;
             Quaternion look = Quaternion.LookRotation(direction);

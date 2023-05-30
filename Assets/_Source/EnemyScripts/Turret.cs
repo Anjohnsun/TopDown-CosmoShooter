@@ -17,7 +17,10 @@ namespace Enemy
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _timeBetweenShoots;
         [SerializeField] private UnityEngine.AI.NavMeshAgent _agent;
+        [SerializeField] private float _stopToAttackRadius;
         private float _actualReloadTime;
+        private float dist;
+        
         
         
         private Transform _target;
@@ -44,10 +47,18 @@ namespace Enemy
         {
             if (other.gameObject.layer == 7)
             {
-                
+                dist = Vector3.Distance(transform.position, other.transform.position);
                 _target = other.gameObject.transform;
-                _agent.enabled = true;
-                _agent.SetDestination(_target.transform.position);
+                if (dist <= _stopToAttackRadius)
+                {
+                    _agent.enabled = false;
+                } else
+                {
+                    _agent.enabled = true;
+                    _agent.SetDestination(_target.transform.position);
+                }
+                
+                
                 Vector3 direction = _target.position - transform.position;
                 Quaternion look = Quaternion.LookRotation(direction);
                 Vector3 rotation = Quaternion.Lerp(_head.rotation, look, _rotationSpeed * Time.deltaTime).eulerAngles;

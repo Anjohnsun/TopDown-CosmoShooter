@@ -671,5 +671,10 @@ PrefabInstance:
       propertyPath: _timeBetweenShoots
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8035908147352437160, guid: 0700dd8b3061ca34ea553ead65b1efa9,
+        type: 3}
+      propertyPath: _stopToAttackRadius
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0700dd8b3061ca34ea553ead65b1efa9, type: 3}
