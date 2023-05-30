@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class TurretRayCast : MonoBehaviour
+public class TurretRayCast : MonoBehaviour, IPausable
 {
 
     public Transform ShootPoint;
@@ -16,41 +16,50 @@ public class TurretRayCast : MonoBehaviour
     [SerializeField] private float _stopToAttackRadius;
     private Ray _ray = new Ray();
     private float dist;
-
+    private bool _onPause = false;
 
     private float _actualReloadTime;
 
 
     private Transform _target;
     private bool _isPlayerInAgrRange = false;
+
+    GameStates IPausable.CurrentGameState { get ; set ; }
+
     private void Start()
     {
         _actualReloadTime = _timeBetweenShoots;
         _agent.speed = _moveSpeed;
         _ray = new Ray(ShootPoint.position, transform.position);
         
+        
     }
     private void Update()
     {
-        _actualReloadTime -= Time.deltaTime;
-
-        if (_isPlayerInAgrRange == true && _actualReloadTime <= 0)
+        if (_onPause == false)
         {
-            
-            _ray.direction = ShootPoint.forward;
-            Debug.DrawRay(ShootPoint.position, ShootPoint.forward * 100, Color.green);
 
-            _actualReloadTime += _timeBetweenShoots;
 
+            _actualReloadTime -= Time.deltaTime;
+
+            if (_isPlayerInAgrRange == true && _actualReloadTime <= 0)
+            {
+
+                _ray.direction = ShootPoint.forward;
+                Debug.DrawRay(ShootPoint.position, ShootPoint.forward * 100, Color.green);
+
+                _actualReloadTime += _timeBetweenShoots;
+
+            }
         }
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 7)
+        if (other.gameObject.layer == 7 && _onPause == false)
         {
             dist = Vector3.Distance(transform.position, other.transform.position);
             _target = other.gameObject.transform;
-            //_agent.enabled = true;
+            
             if (dist <= _stopToAttackRadius)
             {
                 _agent.enabled = false;
@@ -69,14 +78,22 @@ public class TurretRayCast : MonoBehaviour
 
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other )
     {
-        if (other.gameObject.layer == 7)
+        if (other.gameObject.layer == 7 && _onPause == false)
         {
             _isPlayerInAgrRange = false;
             _agent.enabled = false;
         }
     }
-    
 
+    public void OnGameStateChanged(GameStates newGameState)
+    {
+        _onPause = true;
+    }
+
+    void IPausable.OnGameStateChanged(GameStates newGameState)
+    {
+        
+    }
 }

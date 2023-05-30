@@ -18,11 +18,13 @@ namespace Enemy
         [SerializeField] private float _timeBetweenShoots;
         [SerializeField] private UnityEngine.AI.NavMeshAgent _agent;
         [SerializeField] private float _stopToAttackRadius;
+        private Turret turret;
         private float _actualReloadTime;
         private float dist;
-        
-        
-        
+        private bool _onPause = false;
+
+
+
         private Transform _target;
         private bool _isPlayerInAgrRange = false;
 
@@ -32,23 +34,30 @@ namespace Enemy
         {
             _actualReloadTime = _timeBetweenShoots;
             _agent.speed = _moveSpeed;
+
+           // GameStateMachine.StateChanging += turret.OnGameStateChanged;
         }
         private void Update()
         {
-            _actualReloadTime -= Time.deltaTime;
-            
-            if (_isPlayerInAgrRange == true && _actualReloadTime <= 0)
+            if (_onPause == false)
             {
-               
-                Instantiate(_bulletPref, ShootPoint.position, ShootPoint.rotation);
-               
-                _actualReloadTime = _timeBetweenShoots;
-               
+
+
+                _actualReloadTime -= Time.deltaTime;
+
+                if (_isPlayerInAgrRange == true && _actualReloadTime <= 0)
+                {
+
+                    Instantiate(_bulletPref, ShootPoint.position, ShootPoint.rotation);
+
+                    _actualReloadTime = _timeBetweenShoots;
+
+                }
             }
         }
         private void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.layer == 7)
+            if (other.gameObject.layer == 7 && _onPause == false)
             {
                 dist = Vector3.Distance(transform.position, other.transform.position);
                 _target = other.gameObject.transform;
@@ -72,7 +81,7 @@ namespace Enemy
         }
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.layer == 7)
+            if (other.gameObject.layer == 7 && _onPause == false)
             {
                 _isPlayerInAgrRange = false;
                 _agent.enabled = false;
@@ -81,12 +90,13 @@ namespace Enemy
 
         public void OnGameStateChanged(GameStates newGameState)
         {
-            
+            _onPause = true;
+
         }
 
-        void IPausable.OnGameStateChanged(GameStates newGameState)
-        {
-           
-        }
+         void IPausable.OnGameStateChanged(GameStates newGameState)
+         {
+            
+         }
     }
 }

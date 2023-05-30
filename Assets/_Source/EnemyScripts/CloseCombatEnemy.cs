@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloseCombatEnemy : MonoBehaviour
+public class CloseCombatEnemy : MonoBehaviour, IPausable
 {
    
 
@@ -15,10 +15,13 @@ public class CloseCombatEnemy : MonoBehaviour
     [SerializeField] private UnityEngine.AI.NavMeshAgent _agent;
     private float _actualReloadTime;
     private Ray _ray = new Ray();
-    
+    private bool _onPause = false;
 
     private Transform _target;
     private bool _isPlayerInAgrRange = false;
+
+    GameStates IPausable.CurrentGameState { get; set; }
+
     private void Start()
     {
         _actualReloadTime = _timeBetweenStrikes;
@@ -26,20 +29,25 @@ public class CloseCombatEnemy : MonoBehaviour
     }
     private void Update()
     {
-        _actualReloadTime -= Time.deltaTime;
-        _ray = new Ray(_inRangeCheckPoint.position, transform.forward);
-        Debug.DrawRay(_inRangeCheckPoint.position, transform.forward, Color.green);
-        if (Physics.Raycast(_ray) && _actualReloadTime <= 0)
+        if (_onPause == false)
         {
-            
-            
 
-            _actualReloadTime += _timeBetweenStrikes;
+
+            _actualReloadTime -= Time.deltaTime;
+            _ray = new Ray(_inRangeCheckPoint.position, transform.forward);
+            Debug.DrawRay(_inRangeCheckPoint.position, transform.forward, Color.green);
+            if (Physics.Raycast(_ray) && _actualReloadTime <= 0)
+            {
+
+
+
+                _actualReloadTime += _timeBetweenStrikes;
+            }
         }
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 7)
+        if (other.gameObject.layer == 7 && _onPause == false)
         {
 
             _target = other.gameObject.transform;
@@ -55,10 +63,20 @@ public class CloseCombatEnemy : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 7)
+        if (other.gameObject.layer == 7 && _onPause == false)
         {
             _isPlayerInAgrRange = false;
             _agent.enabled = false;
         }
+    }
+
+    public void OnGameStateChanged(GameStates newGameState)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void IPausable.OnGameStateChanged(GameStates newGameState)
+    {
+        throw new System.NotImplementedException();
     }
 }
