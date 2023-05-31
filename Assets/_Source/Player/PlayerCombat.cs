@@ -37,8 +37,8 @@ namespace PlayerSystems
             //_playerInput.Player.Weapon1.started += context => _weaponMachine.ChangeState(typeof(SimplePistol));
             //_playerInput.Player.Weapon2.started += context => _weaponMachine.ChangeState(typeof(MachineGun));
             //_playerInput.Player.Weapon3.started += context => _weaponMachine.ChangeState(typeof(Laser));
-            _playerInput.Player.Weapon3.started += context => ChoseWeap1();
-            _playerInput.Player.Weapon3.started += context => ChoseWeap2();
+            _playerInput.Player.Weapon1.started += context => ChoseWeap1();
+            _playerInput.Player.Weapon2.started += context => ChoseWeap2();
             _playerInput.Player.Weapon3.started += context => ChoseWeap3();
 
             _weaponMachine = new WeaponStateMachine();

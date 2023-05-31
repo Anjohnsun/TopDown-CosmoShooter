@@ -31,7 +31,6 @@ public abstract class AWeapon : AWeaponBase
 
     public override void Enter()
     {
-        Debug.Log("Enter");
         base.Enter();
 
         mat.DOFloat(0 ,"_Dissolve", 0.2f);
