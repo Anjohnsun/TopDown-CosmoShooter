@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HealthSystem;
 
-public class CloseCombatEnemy : MonoBehaviour, IPausable
+public class CloseCombatEnemy : MonoBehaviour, IPausable, IDamagable
 { 
     [SerializeField] private Transform _head;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private Transform _inRangeCheckPoint;
+    [SerializeField] private float _stopToAttackRadius;
     [SerializeField] private float _timeBetweenStrikes;
     [SerializeField] private UnityEngine.AI.NavMeshAgent _agent;
-    private float _actualReloadTime;
-    private Ray _ray = new Ray();
-    private bool _onPause = false;
+    [SerializeField] private int _damage;
+    [SerializeField] private AudioClip _detectionSound;
+    [SerializeField] private AudioSource _audio;
+    
 
+    HealthModule healthModule;
+
+    private float _actualReloadTime;
+    private float _dist;
+    private bool _onPause = false;
     private Transform _target;
     private bool _isPlayerInAgrRange = false;
+    private bool _haveItSounded = false;
 
     GameStates IPausable.CurrentGameState { get; set; }
 
@@ -31,11 +39,17 @@ public class CloseCombatEnemy : MonoBehaviour, IPausable
         if (_onPause == false)
         {
             _actualReloadTime -= Time.deltaTime;
-            _ray = new Ray(_inRangeCheckPoint.position, transform.forward);
-            Debug.DrawRay(_inRangeCheckPoint.position, transform.forward, Color.green);
-            if (Physics.Raycast(_ray) && _actualReloadTime <= 0)
+           
+            
+            if (_dist <= _stopToAttackRadius && _actualReloadTime <= 0)
             {
-                _actualReloadTime += _timeBetweenStrikes;
+               
+                if (healthModule != null)
+                {
+                    healthModule.GetDamage(_damage);
+                }
+               
+                _actualReloadTime = _timeBetweenStrikes;
             }
         }
     }
@@ -43,9 +57,28 @@ public class CloseCombatEnemy : MonoBehaviour, IPausable
     {
         if (other.gameObject.layer == 7 && _onPause == false)
         {
+            Debug.Log("das");
+            if (_haveItSounded == false)
+            {
+                _audio.clip = _detectionSound;
+                _audio.Play();
+                _haveItSounded = true;
+            }
+
+            _dist = Vector3.Distance(transform.position, other.transform.position);
             _target = other.gameObject.transform;
-            _agent.enabled = true;
-            _agent.SetDestination(_target.transform.position);
+           
+            if (_dist <= _stopToAttackRadius)
+            {
+                _agent.enabled = false;
+                _target.TryGetComponent(out healthModule);
+            }
+            else
+            {
+                _agent.enabled = true;
+                _agent.SetDestination(_target.transform.position);
+            }
+            
             Vector3 direction = _target.position - transform.position;
             Quaternion look = Quaternion.LookRotation(direction);
             Vector3 rotation = Quaternion.Lerp(_head.rotation, look, _rotationSpeed * Time.deltaTime).eulerAngles;
@@ -70,5 +103,15 @@ public class CloseCombatEnemy : MonoBehaviour, IPausable
     private void OnDestroy()
     {
         GameStateMachine.StateChanged -= OnGameStateChanged;
+    }
+
+    public void Damage()
+    {
+       
+    }
+
+    public void Annihilate()
+    {
+        
     }
 }

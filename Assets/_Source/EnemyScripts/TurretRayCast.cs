@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HealthSystem;
 
 
-public class TurretRayCast : MonoBehaviour, IPausable
+public class TurretRayCast : MonoBehaviour, IPausable, IDamagable
 {
 
     public Transform ShootPoint;
@@ -14,15 +15,20 @@ public class TurretRayCast : MonoBehaviour, IPausable
     [SerializeField] private float _timeBetweenShoots;
     [SerializeField] private UnityEngine.AI.NavMeshAgent _agent;
     [SerializeField] private float _stopToAttackRadius;
+    [SerializeField] private int _damage;
+    [SerializeField] private AudioSource _audio;
+    [SerializeField] private AudioClip _shootSound;
+    [SerializeField] private AudioClip _detectionSound;
+
+    HealthModule healthModule;
+
     private Ray _ray = new Ray();
     private float dist;
     private bool _onPause = false;
-
     private float _actualReloadTime;
-
-
     private Transform _target;
     private bool _isPlayerInAgrRange = false;
+    private bool _haveItSounded = false;
 
     GameStates IPausable.CurrentGameState { get ; set ; }
 
@@ -45,9 +51,20 @@ public class TurretRayCast : MonoBehaviour, IPausable
             {
 
                 _ray.direction = ShootPoint.forward;
-                Debug.DrawRay(ShootPoint.position, ShootPoint.forward * 100, Color.green);
+                _audio.clip = _shootSound;
+                _audio.Play();
+                RaycastHit _hit;
+                if (Physics.Raycast(_ray, out _hit))
+                {
+                    if (_hit.transform.gameObject.layer == 7)
+                    {
+                        _hit.transform.TryGetComponent(out healthModule);
+                        //healthModule.GetDamage(_damage);
+                    }
+                   
+                }
 
-                _actualReloadTime += _timeBetweenShoots;
+                _actualReloadTime = _timeBetweenShoots;
             }
         }
     }
@@ -55,6 +72,13 @@ public class TurretRayCast : MonoBehaviour, IPausable
     {
         if (other.gameObject.layer == 7 && _onPause == false)
         {
+            if (_haveItSounded == false)
+            {
+                _audio.clip = _detectionSound;
+                _audio.Play();
+                _haveItSounded = true;
+            }
+
             dist = Vector3.Distance(transform.position, other.transform.position);
             _target = other.gameObject.transform;
             
@@ -65,8 +89,9 @@ public class TurretRayCast : MonoBehaviour, IPausable
             else
             {
                 _agent.enabled = true;
+                _agent.SetDestination(_target.transform.position);
             }
-            _agent.SetDestination(_target.transform.position);
+           
             Vector3 direction = _target.position - transform.position;
             Quaternion look = Quaternion.LookRotation(direction);
             Vector3 rotation = Quaternion.Lerp(_head.rotation, look, _rotationSpeed * Time.deltaTime).eulerAngles;
@@ -82,6 +107,7 @@ public class TurretRayCast : MonoBehaviour, IPausable
         {
             _isPlayerInAgrRange = false;
             _agent.enabled = false;
+            _haveItSounded = false;
         }
     }
 
@@ -93,5 +119,15 @@ public class TurretRayCast : MonoBehaviour, IPausable
     private void OnDestroy()
     {
         GameStateMachine.StateChanged -= OnGameStateChanged;
+    }
+
+    public void Damage()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Annihilate()
+    {
+        throw new System.NotImplementedException();
     }
 }
