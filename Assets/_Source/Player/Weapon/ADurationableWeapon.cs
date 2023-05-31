@@ -34,7 +34,7 @@ public class ADurationableWeapon : AReloadableWeapon
                         Instantiate(_hitEffect, _hit.point, new Quaternion());
                     }
                     BulletInMagazine--;
-                    //звук выстрела
+                    _audio.Play();
                 }
                 _timeToShot = _shootDelay;
             }

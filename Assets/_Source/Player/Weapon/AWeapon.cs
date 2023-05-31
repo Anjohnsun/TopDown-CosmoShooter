@@ -20,7 +20,14 @@ public abstract class AWeapon : AWeaponBase
     [SerializeField] protected Sprite _weaponLogo;
     public Sprite WeaponLogo => _weaponLogo;
 
+    [SerializeField] protected AudioSource _audio;
+
     [SerializeField] Material mat;
+
+    private void Awake()
+    {
+        mat.SetFloat("_Dissolve", 1);
+    }
 
     public override void Enter()
     {

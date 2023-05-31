@@ -17,7 +17,8 @@ public class SimplePistol : AReloadableWeapon
                 Instantiate(_hitEffect, hit.point, new Quaternion());
             }
             _bulletsInMagazine--;
-            //звук выстрела
+
+            _audio.Play();
             _wInfoRenderer.RefreshInfo();
         }
     }
