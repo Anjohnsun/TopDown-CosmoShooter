@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using HealthSystem;
 
-public class CloseCombatEnemy : MonoBehaviour, IPausable, IDamagable
+public class CloseCombatEnemy : ADamagable, IPausable
 { 
     [SerializeField] private Transform _head;
     [SerializeField] private float _rotationSpeed;
@@ -105,12 +105,12 @@ public class CloseCombatEnemy : MonoBehaviour, IPausable, IDamagable
         GameStateMachine.StateChanged -= OnGameStateChanged;
     }
 
-    public void Damage()
+    override public void Damage()
     {
        
     }
 
-    public void Annihilate()
+    override public void Annihilate()
     {
         
     }

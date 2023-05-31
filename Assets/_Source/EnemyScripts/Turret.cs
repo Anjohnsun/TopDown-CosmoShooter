@@ -7,7 +7,7 @@ namespace Enemy
 {
 
 
-    public class Turret : MonoBehaviour, IPausable, IDamagable
+    public class Turret : ADamagable, IPausable
     {
         
         public Transform ShootPoint;
@@ -105,12 +105,12 @@ namespace Enemy
             GameStateMachine.StateChanged -= OnGameStateChanged;
         }
 
-        public void Damage()
+        override public void Damage()
         {
             throw new System.NotImplementedException();
         }
 
-        public void Annihilate()
+        override public void Annihilate()
         {
             throw new System.NotImplementedException();
         }

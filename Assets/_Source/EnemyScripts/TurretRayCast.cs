@@ -4,7 +4,7 @@ using UnityEngine;
 using HealthSystem;
 
 
-public class TurretRayCast : MonoBehaviour, IPausable, IDamagable
+public class TurretRayCast : ADamagable, IPausable
 {
 
     public Transform ShootPoint;
@@ -121,12 +121,12 @@ public class TurretRayCast : MonoBehaviour, IPausable, IDamagable
         GameStateMachine.StateChanged -= OnGameStateChanged;
     }
 
-    public void Damage()
+    override public void Damage()
     {
         throw new System.NotImplementedException();
     }
 
-    public void Annihilate()
+    override public void Annihilate()
     {
         throw new System.NotImplementedException();
     }
