@@ -13,7 +13,12 @@ public class SimplePistol : AReloadableWeapon
             Ray ray = new Ray(_shootPoint.position, _shootPoint.forward * 500);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.transform.TryGetComponent(out _enemyHealthModule)) _enemyHealthModule.GetDamage(_damage);
+                if (hit.transform.parent.TryGetComponent(out _enemyHealthModule) || hit.transform.TryGetComponent(out _enemyHealthModule))
+                {
+                    Debug.Log("shoot");
+                    _enemyHealthModule.GetDamage(_damage);
+                    Debug.Log("hitted");
+                }
                 Instantiate(_hitEffect, hit.point, new Quaternion());
             }
             _bulletsInMagazine--;

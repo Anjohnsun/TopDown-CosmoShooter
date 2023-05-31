@@ -32,7 +32,6 @@ public class WeaponStateMachine
 
     public void AddNewState(AWeapon newWeapon)
     {
-        Debug.Log("add new weapon");
         _weapons.Add(newWeapon.GetType(), newWeapon);
     }
 }

@@ -5,18 +5,18 @@ using UnityEngine;
 using HealthSystem;
 using DG.Tweening;
 
-public class Container : MonoBehaviour, IDamagable
+public class Container : ADamagable
 {
     [SerializeField] private List<Product> _productsInside;
     [SerializeField] private AnimationCurve _sizeChangeCurve;
 
-    public void Annihilate()
+    public override void Annihilate()
     {
         foreach(Product product in _productsInside)
         {
             for(int i = 0; i < product._count; i++)
             {
-                Instantiate(product._productPrefab, transform.position + new Vector3(UnityEngine.Random.Range(0, 0.2f), 0, UnityEngine.Random.Range(0, 0.2f)), new Quaternion());
+                Instantiate(product._productPrefab, transform.position + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 0, UnityEngine.Random.Range(-0.5f, 0.5f)), new Quaternion());
                 //звук разрушения
             }
         }
@@ -25,9 +25,10 @@ public class Container : MonoBehaviour, IDamagable
         Destroy(gameObject);
     }
 
-    public void Damage()
+    public override void Damage()
     {
-        transform.DOScale( 1, 0.2f).SetEase(_sizeChangeCurve);
+        Debug.Log("damaged");
+        transform.DOScale( new Vector3(1, 1, 1), 0.2f).SetEase(_sizeChangeCurve);
         //звук поломки
     }
 }
