@@ -23,6 +23,7 @@ namespace HealthSystem
         private void Start()
         {
             if (_uiHealthDrawer != null) _uiHealthDrawer.InitHPbar(_maxHealth, _currentHealth);
+            _owner = GetComponent<IDamagable>();
         }
 
         private void Update()
