@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Chunk : MonoBehaviour
 {
-    public Transform BeginLvl;
     public Transform EndLvl;
     [SerializeField] private List<Transform> _objects = new List<Transform>();
 
