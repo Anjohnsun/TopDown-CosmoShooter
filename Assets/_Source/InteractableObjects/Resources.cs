@@ -24,7 +24,7 @@ public class Resources : MonoBehaviour
                     other.gameObject.GetComponentInParent<PlayerCombat>().AddResources(typeof(MachineGun), _count);
                     break;
                 case WeaponTypes.Laser:
-                    //other.gameObject.GetComponentInParent<PlayerCombat>().AddResources(typeof(), _count);
+                    other.gameObject.GetComponentInParent<PlayerCombat>().AddResources(typeof(Laser), _count);
                     break;
             }
 
