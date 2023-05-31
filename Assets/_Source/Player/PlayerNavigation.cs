@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace PlayerSystems
 {
-    public class PlayerNavigation : MonoBehaviour
+    public class PlayerNavigation : MonoBehaviour, IPausable
     {
         [SerializeField] private float _rotateSpeed;
         [SerializeField] private float _moveSpeed;
@@ -21,6 +21,8 @@ namespace PlayerSystems
         private bool _canMove;
 
         [HideInInspector] public UnityEvent<bool> OnLockActions = new UnityEvent<bool>();
+
+        GameStates IPausable.CurrentGameState { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         private void Awake()
         {
@@ -110,6 +112,19 @@ namespace PlayerSystems
         private void UnlockActions()
         {
             OnLockActions.Invoke(false);
+        }
+
+        public void OnGameStateChanged(GameStates newGameState)
+        {
+            switch (newGameState)
+            {
+                case GameStates.Paused:
+                    _canMove = false;
+                    break;
+                case GameStates.Playing:
+                    _canMove = true;
+                    break;
+            }
         }
     }
 }

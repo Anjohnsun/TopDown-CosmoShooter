@@ -20,6 +20,9 @@ public class Container : MonoBehaviour, IDamagable
                 //звук разрушения
             }
         }
+
+        //dissolving
+        Destroy(gameObject);
     }
 
     public void Damage()
