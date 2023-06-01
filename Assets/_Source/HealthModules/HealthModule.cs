@@ -6,7 +6,7 @@ namespace HealthSystem
 {
     public class HealthModule : MonoBehaviour
     {
-        [SerializeField] private IDamagable _owner;
+        [SerializeField] private ADamagable _owner;
 
         [SerializeField] private int _maxHealth;
         [SerializeField] private int _currentHealth;
@@ -22,8 +22,8 @@ namespace HealthSystem
 
         private void Start()
         {
-            if (_uiHealthDrawer != null) _uiHealthDrawer.InitHPbar(_maxHealth, _currentHealth);
-            _owner = GetComponent<IDamagable>();
+            if (_uiHealthDrawer != null) _uiHealthDrawer?.InitHPbar(_maxHealth, _currentHealth);
+            _owner = GetComponent<ADamagable>();
         }
 
         private void Update()

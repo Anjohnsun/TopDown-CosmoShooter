@@ -6,17 +6,17 @@ namespace HealthSystem
     public class UIHealthDrawer : MonoBehaviour
     {
         [SerializeField] private Image _hpBarImage;
+        private int _maxHp;
 
         public void InitHPbar(int maxHp, int currentHp)
         {
-            //задать количество делений спрайта
-            //указать актуальное кол-во хп
+            _maxHp = maxHp;
+            _hpBarImage.fillAmount = currentHp;
         }
 
         public void Refresh(int currentHp)
         {
-            //подумать над тем, как это сделать красиво
-            //указать актуальное кол-во хп
+            _hpBarImage.fillAmount = currentHp / _maxHp;
         }
     }
 }
