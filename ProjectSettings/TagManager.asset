@@ -11,10 +11,11 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Obstacle
   - Player
   - Bullet
   - BulletCheckRadius
+
   - 
   - 
   - 
