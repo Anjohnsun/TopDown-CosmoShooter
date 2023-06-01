@@ -27,10 +27,11 @@ public class ADurationableWeapon : AReloadableWeapon
             {
                 if (_bulletsInMagazine > 0)
                 {
-                    _ray = new Ray(_shootPoint.position, _shootPoint.forward*500);
+                    _ray = new Ray(_shootPoint.position, _shootPoint.forward * 500);
                     if (Physics.Raycast(_ray, out _hit))
                     {
-                        if (_hit.transform.TryGetComponent(out _enemyHealthModule)) _enemyHealthModule.GetDamage(_damage);
+                        if (_hit.transform.TryGetComponent(out _enemyHealthModule) || _hit.transform.parent.TryGetComponent(out _enemyHealthModule))
+                            _enemyHealthModule.GetDamage(_damage);
                         Instantiate(_hitEffect, _hit.point, new Quaternion());
                     }
                     BulletInMagazine--;

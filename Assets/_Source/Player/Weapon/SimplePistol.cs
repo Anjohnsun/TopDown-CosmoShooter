@@ -5,29 +5,6 @@ using HealthSystem;
 
 public class SimplePistol : AReloadableWeapon
 {
-    private HealthModule _enemyHealthModule;
-    public override void StartAction()
-    {
-        if (_bulletsInMagazine > 0)
-        {
-            Ray ray = new Ray(_shootPoint.position, _shootPoint.forward * 500);
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                if (hit.transform.parent.TryGetComponent(out _enemyHealthModule) || hit.transform.TryGetComponent(out _enemyHealthModule))
-                {
-                    Debug.Log("shoot");
-                    _enemyHealthModule.GetDamage(_damage);
-                    Debug.Log("hitted");
-                }
-                Instantiate(_hitEffect, hit.point, new Quaternion());
-            }
-            _bulletsInMagazine--;
-
-            _audio.Play();
-            _wInfoRenderer.RefreshInfo();
-        }
-    }
-
     public override void Enter()
     {
         base.Enter();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthSystem;
+using System;
 using UnityEngine;
 
 [Serializable]
@@ -7,6 +8,8 @@ public abstract class AReloadableWeapon : AWeapon
     [SerializeField] protected int _magazineSize;
     [SerializeField] protected int _bulletsInMagazine;
     [SerializeField] protected int _extraBulletNumber;
+
+    private HealthModule _enemyHealthModule;
 
     protected int BulletInMagazine
     {
@@ -55,5 +58,25 @@ public abstract class AReloadableWeapon : AWeapon
     {
         base.Enter();
         _wInfoRenderer.ChangeWeapon(this);
+    }
+
+    public override void StartAction()
+    {
+        if (_bulletsInMagazine > 0)
+        {
+            Ray ray = new Ray(_shootPoint.position, _shootPoint.forward * 500);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (hit.transform.parent.TryGetComponent(out _enemyHealthModule) || hit.transform.TryGetComponent(out _enemyHealthModule))
+                {
+                    _enemyHealthModule.GetDamage(_damage);
+                }
+                Instantiate(_hitEffect, hit.point, new Quaternion());
+            }
+            _bulletsInMagazine--;
+
+            _audio.Play();
+            _wInfoRenderer.RefreshInfo();
+        }
     }
 }
