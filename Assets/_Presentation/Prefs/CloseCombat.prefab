@@ -1694,7 +1694,7 @@ MonoBehaviour:
   _head: {fileID: 6251270649740612405}
   _rotationSpeed: 3
   _moveSpeed: 3
-  _stopToAttackRadius: 0
+  _stopToAttackRadius: 1
   _timeBetweenStrikes: 1
   _agent: {fileID: 6251270650104870287}
   _damage: 0

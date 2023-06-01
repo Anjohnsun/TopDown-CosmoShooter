@@ -807,7 +807,7 @@ MonoBehaviour:
   _moveSpeed: 3
   _timeBetweenShoots: 1
   _agent: {fileID: 6490747754121782042}
-  _stopToAttackRadius: 4
+  _stopToAttackRadius: 2
   _damage: 0
   _audio: {fileID: 6219441163763756829}
   _shootSound: {fileID: 8300000, guid: 65208279670e953479647a0fc5336843, type: 3}
