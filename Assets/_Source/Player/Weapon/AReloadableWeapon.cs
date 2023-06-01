@@ -9,7 +9,7 @@ public abstract class AReloadableWeapon : AWeapon
     [SerializeField] protected int _bulletsInMagazine;
     [SerializeField] protected int _extraBulletNumber;
 
-    private HealthModule _enemyHealthModule;
+    protected HealthModule _enemyHealthModule;
 
     protected int BulletInMagazine
     {

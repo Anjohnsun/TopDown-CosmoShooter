@@ -8,7 +8,6 @@ public class ADurationableWeapon : AReloadableWeapon
     [SerializeField] private float _shootDelay;
     private float _timeToShot = 0;
     private bool _isShooting = false;
-    private HealthModule _enemyHealthModule;
 
     protected RaycastHit _hit;
     protected Ray _ray;
