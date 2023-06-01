@@ -125,6 +125,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4581397971611061748}
   - component: {fileID: 1268542673328135017}
+  - component: {fileID: 5466999280509480074}
+  - component: {fileID: 6838840143035286211}
+  - component: {fileID: 2192087611651952886}
   m_Layer: 0
   m_Name: segment_corridor1
   m_TagString: Untagged
@@ -167,6 +170,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EndLvl: {fileID: 8936907200389671507}
   _objects: []
+--- !u!65 &5466999280509480074
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587702979886564312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.5, z: 11}
+  m_Center: {x: 0, y: -0.25, z: 5.5}
+--- !u!65 &6838840143035286211
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587702979886564312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 11}
+  m_Center: {x: -5.2, y: 1.5, z: 5.5}
+--- !u!65 &2192087611651952886
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587702979886564312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 11}
+  m_Center: {x: 5.2, y: 1.5, z: 5.5}
 --- !u!1 &2291601312065316491
 GameObject:
   m_ObjectHideFlags: 0
