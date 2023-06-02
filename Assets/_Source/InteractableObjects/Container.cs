@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using HealthSystem;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class Container : ADamagable
 {
     [SerializeField] private List<Product> _productsInside;
     [SerializeField] private AnimationCurve _sizeChangeCurve;
+    [SerializeField] private GameObject _deathParticle;
 
     public override void Annihilate()
     {
@@ -20,6 +22,8 @@ public class Container : ADamagable
                 //звук разрушения
             }
         }
+
+        Instantiate(_deathParticle, transform.position, new Quaternion());
 
         //dissolving
         Destroy(gameObject);
