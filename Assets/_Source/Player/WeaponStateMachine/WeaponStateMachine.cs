@@ -24,7 +24,7 @@ public class WeaponStateMachine
     }
 
     public void ChangeState(Type typeOfNextWeapon)
-    {   
+    {
         _currentWeapon?.Exit();
         _currentWeapon = _weapons[typeOfNextWeapon];
         _currentWeapon.Enter();

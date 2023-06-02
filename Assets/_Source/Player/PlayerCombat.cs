@@ -18,7 +18,7 @@ namespace PlayerSystems
 
         delegate void UsingWeapon();
         private UsingWeapon ChoseWeap1;
-        private UsingWeapon ChoseWeap2;    
+        private UsingWeapon ChoseWeap2;
         private UsingWeapon ChoseWeap3;
         private UsingWeapon ReloadD;
         private UsingWeapon StartActionD;
@@ -64,7 +64,8 @@ namespace PlayerSystems
                 ChoseWeap1 += () => _weaponMachine.ChangeState(typeof(SimplePistol));
                 ChoseWeap2 += () => _weaponMachine.ChangeState(typeof(MachineGun));
                 ChoseWeap3 += () => _weaponMachine.ChangeState(typeof(Laser));
-            } else
+            }
+            else
             {
                 ReloadD -= Reload;
                 StartActionD -= StartAction;
