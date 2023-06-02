@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.23078994, g: 0.2686177, b: 0.2828225, a: 1}
+  m_IndirectSpecularColor: {r: 0.23079054, g: 0.26861838, b: 0.28282285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1515,6 +1515,65 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514539787}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &563504595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 563504598}
+  - component: {fileID: 563504597}
+  - component: {fileID: 563504596}
+  m_Layer: 0
+  m_Name: lightTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &563504596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563504595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72dcdfbdd27cb2941a67f925516f4947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightFollowing: {fileID: 1025758338}
+--- !u!135 &563504597
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563504595}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &563504598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563504595}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.02, y: 0, z: 59.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &577547842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6968339996908483065, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
@@ -2043,7 +2102,7 @@ Transform:
   m_Children:
   - {fileID: 1677222107}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &818044017 stripped
 MonoBehaviour:
@@ -2612,7 +2671,6 @@ GameObject:
   - component: {fileID: 1025758343}
   - component: {fileID: 1025758342}
   - component: {fileID: 1025758341}
-  - component: {fileID: 1025758340}
   - component: {fileID: 1025758339}
   - component: {fileID: 1025758344}
   m_Layer: 0
@@ -2637,19 +2695,6 @@ MonoBehaviour:
   _followTarget: {fileID: 47030666}
   _lookTarget: {fileID: 796264059}
   _lightAnim: {fileID: 1025758344}
---- !u!135 &1025758340
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1025758338}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 0, z: 11.5}
 --- !u!114 &1025758341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3412,7 +3457,7 @@ PrefabInstance:
     - target: {fileID: 4273897340916070622, guid: dd771be65b4d49c41a95db6b05fe83a1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4273897340916070622, guid: dd771be65b4d49c41a95db6b05fe83a1,
         type: 3}
@@ -4069,7 +4114,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1598391047
 GameObject:
@@ -4938,7 +4983,7 @@ Transform:
   m_Children:
   - {fileID: 1694546637}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1785616296 stripped
 MonoBehaviour:
