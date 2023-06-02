@@ -4274,10 +4274,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 688567266}
     m_Modifications:
+    - target: {fileID: 3058421663668184284, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.8146338
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058421663668184284, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.40731692
+      objectReference: {fileID: 0}
     - target: {fileID: 6968339996908483043, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
         type: 3}
       propertyPath: m_Name
       value: RaycastTurrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968339996908483043, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6968339996908483065, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
         type: 3}
@@ -4411,10 +4426,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 809669497}
     m_Modifications:
+    - target: {fileID: 3058421663668184284, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.9156063
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058421663668184284, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.45780313
+      objectReference: {fileID: 0}
     - target: {fileID: 6968339996908483043, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
         type: 3}
       propertyPath: m_Name
       value: RaycastTurrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968339996908483043, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6968339996908483065, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
         type: 3}
@@ -4599,10 +4629,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1776477591}
     m_Modifications:
+    - target: {fileID: 3058421663668184284, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.9182726
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058421663668184284, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.45913607
+      objectReference: {fileID: 0}
     - target: {fileID: 6968339996908483043, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
         type: 3}
       propertyPath: m_Name
       value: RaycastTurrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968339996908483043, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6968339996908483065, guid: 5e96d47f08e6ac9489dc7fa5a028f1b1,
         type: 3}
@@ -5052,7 +5097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9f68729de7bd8458bbd4480b510ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parent: {fileID: 0}
+  _parent: {fileID: 2112722161}
   ChunkPrefabsEntry:
   - {fileID: 612872813179121891, guid: e398540046710ae44857cfd8309791d1, type: 3}
   - {fileID: 8887995971250938773, guid: 12d1d568eddfff94eb8ccdc8c6a6070e, type: 3}
