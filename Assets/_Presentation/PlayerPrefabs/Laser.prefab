@@ -88,7 +88,8 @@ MonoBehaviour:
   - serializedVersion: 2
     m_Bits: 0
   _wInfoRenderer: {fileID: 0}
-  _weaponLogo: {fileID: 21300000, guid: a3ced8f7044b9de4787602a9e9b20ea7, type: 3}
+  _weaponLogo: {fileID: 21300000, guid: 6b7c970ceae9eb0449a30795e7765320, type: 3}
+  _audio: {fileID: 0}
   mat: {fileID: 2100000, guid: 91cdd8b5fc1f0cd42bfde4a381124093, type: 2}
   _magazineSize: 70
   _bulletsInMagazine: 173

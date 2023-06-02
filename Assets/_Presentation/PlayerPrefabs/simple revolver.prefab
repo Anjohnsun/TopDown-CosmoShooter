@@ -84,7 +84,8 @@ MonoBehaviour:
   _shootPoint: {fileID: 6874323198617387250}
   _shootableLayers: []
   _wInfoRenderer: {fileID: 0}
-  _weaponLogo: {fileID: 0}
+  _weaponLogo: {fileID: 21300000, guid: f6d154f07b8640f4391ed223d36692f1, type: 3}
+  _audio: {fileID: 0}
   mat: {fileID: 0}
   _magazineSize: 4
   _bulletsInMagazine: 8
