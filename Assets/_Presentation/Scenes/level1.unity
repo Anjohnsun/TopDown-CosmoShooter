@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.23079054, g: 0.26861838, b: 0.28282285, a: 1}
+  m_IndirectSpecularColor: {r: 0.23078994, g: 0.2686177, b: 0.2828225, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -375,6 +375,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25163390}
   m_CullTransparentMesh: 1
+--- !u!1 &25986611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5030264557721901878, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 497622356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &25986618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25986611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027bc8a73a2ac7448a6940653ed8c839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletsInMagazine: {fileID: 1676787530}
+  _extraBullets: {fileID: 1144190571}
+  _weaponLogo: {fileID: 327274467}
 --- !u!1 &91616461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,6 +1974,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 193618138714559364, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2,
+        type: 3}
+      propertyPath: _wInfoRenderer
+      value: 
+      objectReference: {fileID: 25986618}
     - target: {fileID: 5030264556922689708, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -2098,6 +2124,16 @@ PrefabInstance:
       propertyPath: _hpBarImage
       value: 
       objectReference: {fileID: 1009328096}
+    - target: {fileID: 5030264558527591654, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2,
+        type: 3}
+      propertyPath: _wInfoRenderer
+      value: 
+      objectReference: {fileID: 25986618}
+    - target: {fileID: 5030264558589436570, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2,
+        type: 3}
+      propertyPath: _wInfoRenderer
+      value: 
+      objectReference: {fileID: 25986618}
     - target: {fileID: 5030264558727486307, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2,
         type: 3}
       propertyPath: m_Waypoints.Array.data[0].position.z
@@ -4396,7 +4432,7 @@ PrefabInstance:
     - target: {fileID: 1203008027340291370, guid: 0bf8caae70837514c824baf2229e6eb4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 58.07029
+      value: 4.81
       objectReference: {fileID: 0}
     - target: {fileID: 1203008027340291370, guid: 0bf8caae70837514c824baf2229e6eb4,
         type: 3}
@@ -5332,7 +5368,6 @@ GameObject:
   - component: {fileID: 1641301488}
   - component: {fileID: 1641301487}
   - component: {fileID: 1641301486}
-  - component: {fileID: 1641301489}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -5390,21 +5425,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1641301489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641301485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027bc8a73a2ac7448a6940653ed8c839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletsInMagazine: {fileID: 1676787530}
-  _extraBullets: {fileID: 1144190571}
-  _weaponLogo: {fileID: 327274467}
 --- !u!65 &1665077545
 BoxCollider:
   m_ObjectHideFlags: 0
