@@ -24,7 +24,8 @@ public class Container : ADamagable
             }
         }
 
-        Instantiate(_deathParticle, transform.position, new Quaternion());
+        // particle
+        if (_deathParticle != null) Instantiate(_deathParticle, transform.position, new Quaternion());
 
         //dissolving
         Destroy(gameObject);
