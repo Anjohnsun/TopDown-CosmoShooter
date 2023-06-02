@@ -77,6 +77,7 @@ namespace PlayerSystems
             _rigidBody.AddForce((_movingCorrector.forward * way.y + _movingCorrector.right * way.x) * _moveSpeed, ForceMode.Acceleration);
             if (_rigidBody.velocity.magnitude > _moveSpeed)
                 _rigidBody.velocity = _rigidBody.velocity.normalized * _moveSpeed;
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
 
         private void MakeDodge()
