@@ -29,6 +29,7 @@ public class FollowLight : MonoBehaviour
         {
             canFollow = true;
             _lightAnim.Play();
+            gameObject.GetComponent<Collider>().enabled = false;
         }
     }
 }
