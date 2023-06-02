@@ -8,6 +8,7 @@ public class Note : MonoBehaviour
     [SerializeField] private string _content;
     [SerializeField] private string _date;
     [SerializeField] private string _author;
+    [SerializeField] private GameObject _tutorialInteract;
 
     [SerializeField] private LayerMask _playerLayer;
 
@@ -38,13 +39,20 @@ public class Note : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if ((_playerLayer & 1 << other.gameObject.layer) == 1 << other.gameObject.layer)
+        {
             _interactNote += ReadNote;
+            _tutorialInteract.SetActive(true);
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
         if ((_playerLayer & 1 << other.gameObject.layer) == 1 << other.gameObject.layer)
+        {
             _interactNote = null;
+            _tutorialInteract.SetActive(false);
+        }
     }
 
     private void ReadNote()
