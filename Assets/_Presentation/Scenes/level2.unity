@@ -1337,6 +1337,7 @@ GameObject:
   - component: {fileID: 663987169}
   - component: {fileID: 663987168}
   - component: {fileID: 663987167}
+  - component: {fileID: 663987171}
   m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -1422,6 +1423,35 @@ Transform:
   m_Father: {fileID: 263604114}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &663987171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663987166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 23800000, guid: 6d44671ac158ca448a74d6eb177cf1ee, type: 2}
 --- !u!1 &677982684
 GameObject:
   m_ObjectHideFlags: 0
@@ -4383,3 +4413,77 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148839186097}
   m_Mesh: {fileID: 6525949916285243375, guid: bec995df40b826f4ca0306d7904bed24, type: 3}
+--- !u!1001 &3775516650463145898
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.119
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.639
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 83.818
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937924, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937927, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_BaseOffset
+      value: -1.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775516649463937933, guid: cc13f1487983c4c44b86bbe59bd3fcf9,
+        type: 3}
+      propertyPath: m_Name
+      value: RocketTurret
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cc13f1487983c4c44b86bbe59bd3fcf9, type: 3}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2449786673427375870}
   - component: {fileID: 2449786673427375869}
   - component: {fileID: 2449786673427375868}
+  - component: {fileID: 1244516201}
   m_Layer: 0
   m_Name: WeaponUnlocker (3)
   m_TagString: Untagged
@@ -64,6 +65,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &1244516201
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2449786673427375867}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e393edac69173d4bb0f3b29729f874b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2449786672212277133
 PrefabInstance:
   m_ObjectHideFlags: 0

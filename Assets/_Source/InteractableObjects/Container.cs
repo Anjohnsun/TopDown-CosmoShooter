@@ -14,11 +14,12 @@ public class Container : ADamagable
 
     public override void Annihilate()
     {
-        foreach(Product product in _productsInside)
+        Debug.Log("Destroyed");
+        foreach (Product product in _productsInside)
         {
-            for(int i = 0; i < product._count; i++)
+            for (int i = 0; i < product._count; i++)
             {
-                Instantiate(product._productPrefab, transform.position + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 0, UnityEngine.Random.Range(-0.5f, 0.5f)), new Quaternion());
+                Instantiate(product._productPrefab, transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f)), new Quaternion());
                 //звук разрушения
             }
         }
@@ -33,7 +34,7 @@ public class Container : ADamagable
     public override void Damage()
     {
         Debug.Log("damaged");
-        transform.DOScale( new Vector3(1, 1, 1), 0.2f).SetEase(_sizeChangeCurve);
+        //transform.DOScale(new Vector3(1, 1, 1), 0.2f).SetEase(_sizeChangeCurve);
         //звук поломки
     }
 }
