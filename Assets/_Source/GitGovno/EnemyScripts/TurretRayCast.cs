@@ -133,6 +133,6 @@ public class TurretRayCast : ADamagable, IPausable
 
     override public void Annihilate()
     {
-        throw new System.NotImplementedException();
+        Destroy(gameObject);
     }
 }

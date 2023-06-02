@@ -215,10 +215,10 @@ GameObject:
   - component: {fileID: 3775516649463937924}
   - component: {fileID: 3775516649463937927}
   - component: {fileID: 3775516649463937926}
-  - component: {fileID: 3775516649463937921}
   - component: {fileID: 3775516649463937920}
   - component: {fileID: 3775516649463937923}
   - component: {fileID: 3775516649463937922}
+  - component: {fileID: 4121067336307381992}
   m_Layer: 0
   m_Name: RocketTurret
   m_TagString: Untagged
@@ -285,19 +285,6 @@ MonoBehaviour:
   _damage: 1
   _detectionSound: {fileID: 8300000, guid: 26332e9e60f09ec42a75303ddb7cf4c4, type: 3}
   _audio: {fileID: 3775516649463937922}
---- !u!135 &3775516649463937921
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3775516649463937933}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 7
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3775516649463937920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,6 +415,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &4121067336307381992
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3775516649463937933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.063697, y: 2.951943, z: 3.2276895}
+  m_Center: {x: 0.027201176, y: -0.97597146, z: 0.45762897}
 --- !u!1 &3775516649581645660
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3775516649581645661}
+  - component: {fileID: 3425222136488552927}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -460,6 +461,19 @@ Transform:
   m_Father: {fileID: 2202427282485489143}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!135 &3425222136488552927
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3775516649581645660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.09
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4862545625771402042
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,7 +57,6 @@ public class CloseCombatEnemy : ADamagable, IPausable
     {
         if (other.gameObject.layer == 7 && _onPause == false)
         {
-            Debug.Log("das");
             if (_haveItSounded == false)
             {
                 _audio.clip = _detectionSound;
