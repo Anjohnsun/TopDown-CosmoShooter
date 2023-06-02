@@ -2098,26 +2098,6 @@ PrefabInstance:
       propertyPath: _hpBarImage
       value: 
       objectReference: {fileID: 1009328096}
-    - target: {fileID: 5030264558727486307, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2,
-        type: 3}
-      propertyPath: m_Waypoints.Array.data[0].position.z
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5030264558727486307, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2,
-        type: 3}
-      propertyPath: m_Waypoints.Array.data[1].position.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5030264558727486307, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2,
-        type: 3}
-      propertyPath: m_Waypoints.Array.data[2].position.z
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5030264558727486307, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2,
-        type: 3}
-      propertyPath: m_Waypoints.Array.data[3].position.x
-      value: -8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2b733e7ae6ff4d47ae1e12d2a8223a2, type: 3}
 --- !u!1 &553850693
