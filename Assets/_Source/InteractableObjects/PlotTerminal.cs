@@ -9,6 +9,7 @@ public class PlotTerminal : ADamagable
     [SerializeField] private AudioSource _audio;
     [SerializeField] private AudioClip _destroySound;
     [SerializeField] private AudioClip _crackSound;
+    [SerializeField] private AudioClip _doorOpening;
     [SerializeField] private CinemachineVirtualCamera _camera;
     [SerializeField] private Transform _door;
 
@@ -33,7 +34,9 @@ public class PlotTerminal : ADamagable
     {
         _camera.Priority = 100;
         yield return new WaitForSeconds(2f);
-        _door.DOMoveZ(_door.position.z + 1.5f, 1.4f);
+        _audio.clip = _doorOpening;
+        _audio.Play();
+        _door.DOMoveX(_door.position.x + 2f, 1.4f);
         yield return new WaitForSeconds(2f);
         _camera.Priority = -100;
     }

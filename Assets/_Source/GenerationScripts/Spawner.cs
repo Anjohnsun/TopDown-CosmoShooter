@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    
+    [SerializeField] Transform _parent;
+
     [SerializeField] Chunk[] ChunkPrefabsEntry;
     [SerializeField] Chunk[] ChunkPrefabsExit;
     [SerializeField] Chunk[] ChunkPrefabsMiddle;
@@ -27,15 +28,15 @@ public class Spawner : MonoBehaviour
         Chunk newChank;
         if (section == "entry")
         {
-            newChank = Instantiate(ChunkPrefabsEntry[Random.Range(0, ChunkPrefabsEntry.Length)]);
+            newChank = Instantiate(ChunkPrefabsEntry[Random.Range(0, ChunkPrefabsEntry.Length)], _parent);
         }
         else if (section == "exit")
         {
-            newChank = Instantiate(ChunkPrefabsExit[Random.Range(0, ChunkPrefabsExit.Length)]);
+            newChank = Instantiate(ChunkPrefabsExit[Random.Range(0, ChunkPrefabsExit.Length)], _parent);
         }
         else
         {
-            newChank = Instantiate(ChunkPrefabsMiddle[Random.Range(0, ChunkPrefabsMiddle.Length)]);
+            newChank = Instantiate(ChunkPrefabsMiddle[Random.Range(0, ChunkPrefabsMiddle.Length)], _parent);
         }
 
         if (_spawnedChunks.Count == 0) newChank.transform.position = transform.position;
