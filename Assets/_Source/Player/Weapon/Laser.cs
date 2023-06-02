@@ -20,7 +20,11 @@ public class Laser : ADurationableWeapon
     private new void Update()
     {
         base.Update();
-        _lineRenderer.SetPosition(1, new Vector3(0, 0, _hit.distance*1f));
+    }
+
+    private void FixedUpdate()
+    {
+        _lineRenderer.SetPosition(1, new Vector3(0, 0, _hit.distance));
     }
 
     public override void StopAction()
